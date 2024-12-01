@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "aero_additions:item/updraft_tome_model"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "aero_additions:item/updraft_tome_gui"
+    }
+  }
+}
