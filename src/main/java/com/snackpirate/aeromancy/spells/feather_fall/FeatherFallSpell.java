@@ -53,17 +53,16 @@ public class FeatherFallSpell extends AbstractSpell {
 	}
 
 	public FeatherFallSpell() {
-		this.manaCostPerLevel = 20;
+		this.manaCostPerLevel = 15;
 		this.baseSpellPower = 30;
 		this.spellPowerPerLevel = 5;
 		this.castTime = 30;
-		this.baseManaCost = 70;
+		this.baseManaCost = 50;
 	}
 
 	//copied from HasteSpell
 	@Override
 	public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-		//If we did not target a creature, target ourself
 		if (!Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, .35f, false)) {
 			playerMagicData.setAdditionalCastData(new TargetEntityCastData(entity));
 			if (entity instanceof ServerPlayer serverPlayer) {

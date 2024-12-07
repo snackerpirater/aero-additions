@@ -35,6 +35,15 @@ repositories {
         url = "https://code.redspace.io/releases"
     }
 
+
+    maven {
+        // Shadows (Attribute Lib)
+        url "https://maven.shadowsoffire.dev/releases"
+        content {
+            includeGroup "dev.shadowsoffire"
+        }
+    }
+
 }
 
 base {
@@ -137,6 +146,12 @@ dependencies {
 
     compileOnly "io.redspace:irons_spellbooks:${irons_spells_version}:api"
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
+
+//    runtimeOnly "io.redspace:irons_jewelry:1.0.0"
+//    localRuntime "io.redspace:atlas_api:1.21-1.0.1"
+//    localRuntime "dev.shadowsoffire:ApothicAttributes:${minecraft_version}-2.2.2"
+//    localRuntime "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
+
 
     compileOnly "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}:api"
     localRuntime "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}"
