@@ -41,6 +41,8 @@ public class AALang extends LanguageProvider {
 		addItem(AAItems.WINDMAKER_BOOTS, "Windmaker Boots");
 		add("death.attack.asphyxiation", "%s discovered that air is essential to life");
 		addEffect(AASpells.MobEffects.BREATHLESS, "Breathless");
+		addEffect(AASpells.MobEffects.WIND_SHIELD, "Wind Shielded");
+		addSpell(AASpells.WIND_SHIELD.get(), "Wind Shield", "Form a swirling shield of air around your body, reflecting any projectile coming your way.");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

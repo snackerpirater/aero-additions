@@ -14,6 +14,7 @@ import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindCharge;
 import com.snackpirate.aeromancy.spells.wind_charge.WindChargeSpell;
 import com.snackpirate.aeromancy.spells.wind_shield.WindShieldEffect;
+import com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -62,6 +63,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> AIRSTEP = registerSpell(new AirstepSpell());
 	public static final Supplier<AbstractSpell> ASPHYXIATE = registerSpell(new AsphyxiateSpell());
 	public static final Supplier<AbstractSpell> FEATHER_FALL = registerSpell(new FeatherFallSpell());
+	public static final Supplier<AbstractSpell> WIND_SHIELD = registerSpell(new WindShieldSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);

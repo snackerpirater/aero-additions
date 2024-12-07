@@ -3,6 +3,7 @@
   "attribute.aero_additions.wind_spell_power": "Wind Spell Power",
   "death.attack.asphyxiation": "%s discovered that air is essential to life",
   "effect.aero_additions.breathless": "Breathless",
+  "effect.aero_additions.wind_shield": "Wind Shielded",
   "item.aero_additions.air_staff": "Air Staff",
   "item.aero_additions.updraft_tome": "Updraft Tome",
   "item.aero_additions.wind_rune": "Wind Rune",
@@ -22,6 +23,8 @@
   "spell.aero_additions.updraft.guide": "Launch enemies into the air, temporarily stunning them.",
   "spell.aero_additions.wind_charge": "Wind Charge",
   "spell.aero_additions.wind_charge.guide": "Fire a powerful wind charge, which launches enemies on impact.",
+  "spell.aero_additions.wind_shield": "Wind Shield",
+  "spell.aero_additions.wind_shield.guide": "Form a swirling shield of air around your body, reflecting any projectile coming your way.",
   "ui.aero_additions.recast_targets": "%s Targets",
   "ui.aero_additions.stun_duration": "%ss Stun Duration"
 }
