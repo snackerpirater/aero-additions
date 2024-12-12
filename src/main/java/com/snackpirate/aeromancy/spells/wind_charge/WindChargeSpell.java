@@ -20,14 +20,14 @@ public class WindChargeSpell extends AbstractSpell {
 	public WindChargeSpell() {
 		this.manaCostPerLevel = 8;
 		this.baseSpellPower = 10;
-		this.spellPowerPerLevel = 1;
+		this.spellPowerPerLevel = 3;
 		this.castTime = 0;
 		this.baseManaCost = 20;
 	}
 	@Override
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
 		return List.of(
-				Component.translatable("ui.irons_spellbooks.strength", String.format("%s%%", (int) (getDamage(spellLevel, caster) * 100 / getDamage(1, null))))
+				Component.translatable("ui.irons_spellbooks.strength", String.format("%s%%", (int) (getDamage(spellLevel, caster) * 100)))
 		);
 	}
 
@@ -76,8 +76,8 @@ public class WindChargeSpell extends AbstractSpell {
 	}
 
 	private float getDamage(int spellLevel, LivingEntity entity) {
-		//default wind charge should be 1 damage, max should be like 2?
-		return getSpellPower(spellLevel, entity) / 8f;
+		//1 = 1 wind charge; 2 = 2 wind charge
+		return 0.2f * (float) Math.sqrt(getSpellPower(spellLevel, entity))/0.6324555f;
 	}
 
 }

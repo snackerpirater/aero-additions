@@ -41,7 +41,7 @@ public class AsphyxiateSpell extends AbstractSpell {
 		if (playerMagicData != null && playerMagicData.getAdditionalCastData() instanceof TargetEntityCastData && ((playerMagicData.getCastDurationRemaining()) % 10 == 0)) {
 //			Aeromancy.LOGGER.info("asphyx cast tick");
 			var target = ((TargetEntityCastData) playerMagicData.getAdditionalCastData()).getTarget((ServerLevel) level);
-			if (target != null) target.addEffect(new MobEffectInstance(AASpells.MobEffects.BREATHLESS, 5, spellLevel));
+			if (target != null) target.addEffect(new MobEffectInstance(AASpells.MobEffects.BREATHLESS, 5, spellLevel-1));
 		}
 		super.onServerCastTick(level, spellLevel, entity, playerMagicData);
 	}
@@ -77,11 +77,11 @@ public class AsphyxiateSpell extends AbstractSpell {
 				.setMaxLevel(3)
 				.setCooldownSeconds(20)
 				.build();
-		this.manaCostPerLevel = 4;
+		this.manaCostPerLevel = 3;
 		this.baseSpellPower = 3;
 		this.spellPowerPerLevel = 2;
 		this.castTime = 100;
-		this.baseManaCost = 10;
+		this.baseManaCost = 9;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.spells.AASpells;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -35,6 +36,7 @@ public class Aeromancy
         AASounds.register(modEventBus);
         AASpells.register(modEventBus);
         AAItems.register(modEventBus);
+        AACreativeTab.register(modEventBus);
 
     }
     private void commonSetup(final FMLCommonSetupEvent event)

@@ -43,6 +43,8 @@ public class AALang extends LanguageProvider {
 		addEffect(AASpells.MobEffects.BREATHLESS, "Breathless");
 		addEffect(AASpells.MobEffects.WIND_SHIELD, "Wind Shielded");
 		addSpell(AASpells.WIND_SHIELD.get(), "Wind Shield", "Form a swirling shield of air around your body, reflecting any projectile coming your way.");
+		add("itemGroup.aero_additions.main_tab", "Aeromancy Additions");
+		add("spell.aero_additions.wind_shield.chance", "%s%% Chance To Deflect Projectiles");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

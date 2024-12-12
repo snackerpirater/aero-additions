@@ -12,6 +12,7 @@
   "item.aero_additions.windmaker_headpiece": "Windmaker Headpiece",
   "item.aero_additions.windmaker_leggings": "Windmaker Leggings",
   "item.aero_additions.windmaker_robes": "Windmaker Robes",
+  "itemGroup.aero_additions.main_tab": "Aeromancy Additions",
   "school.aero_additions.wind": "Wind",
   "spell.aero_additions.airstep": "Airstep",
   "spell.aero_additions.airstep.guide": "Execute a series of mid-air jumps, in rapid succession.",
@@ -24,6 +25,7 @@
   "spell.aero_additions.wind_charge": "Wind Charge",
   "spell.aero_additions.wind_charge.guide": "Fire a powerful wind charge, which launches enemies on impact.",
   "spell.aero_additions.wind_shield": "Wind Shield",
+  "spell.aero_additions.wind_shield.chance": "%s%% Chance To Deflect Projectiles",
   "spell.aero_additions.wind_shield.guide": "Form a swirling shield of air around your body, reflecting any projectile coming your way.",
   "ui.aero_additions.recast_targets": "%s Targets",
   "ui.aero_additions.stun_duration": "%ss Stun Duration"

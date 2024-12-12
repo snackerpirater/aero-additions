@@ -1,5 +1,6 @@
 package com.snackpirate.aeromancy.spells.wind_charge;
 
+import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
@@ -115,7 +116,19 @@ public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagi
 	}
 
 	private void explode(Vec3 pos) {
-		this.level().explode(this, (DamageSource)null, getCalculator(this.getDamage()), pos.x(), pos.y(), pos.z(), 1.5F, false, Level.ExplosionInteraction.TRIGGER, ParticleTypes.GUST_EMITTER_SMALL, ParticleTypes.GUST_EMITTER_LARGE, SoundEvents.WIND_CHARGE_BURST);}
+		Aeromancy.LOGGER.info("damage: " + this.getDamage());
+		this.level().explode(
+				this,
+				null,
+				getCalculator(1.22f*this.getDamage()),
+				pos.x(), pos.y(), pos.z(),
+				1.5F,
+				false,
+				Level.ExplosionInteraction.TRIGGER,
+				ParticleTypes.GUST_EMITTER_SMALL,
+				ParticleTypes.GUST_EMITTER_LARGE,
+				SoundEvents.WIND_CHARGE_BURST);
+	}
 
 	@Override
 	public boolean isNoGravity() {
@@ -124,7 +137,7 @@ public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagi
 
 	private static ExplosionDamageCalculator getCalculator(float damage) {
 //		Aeromancy.LOGGER.info("damage: {}", damage);
-		return new SimpleExplosionDamageCalculator(true, false, Optional.of((float)(1.25f*damage)), BuiltInRegistries.BLOCK.getTag(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity()));
+		return new SimpleExplosionDamageCalculator(true, false, Optional.of(damage), BuiltInRegistries.BLOCK.getTag(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity()));
 	}
 
 	@Override
