@@ -41,7 +41,6 @@ public class AAData extends DatapackBuiltinEntriesProvider {
 		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeClient(), lang);
 		generator.addProvider(event.includeServer(), new AAItemTags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty())));
-		TagsProvider<DamageType> provider1 = new AADamageTypeTags(output, provider, Aeromancy.MOD_ID, helper);
-		generator.addProvider(event.includeServer(), provider1);
+
 	}
 }

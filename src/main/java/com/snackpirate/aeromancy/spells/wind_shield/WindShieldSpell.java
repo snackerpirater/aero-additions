@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SpongeBlock;
 
 import java.util.List;
 
@@ -58,7 +57,11 @@ public class WindShieldSpell extends AbstractSpell {
 		super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 	}
 	public static float chanceToDeflect(int amplifier) {
-		float chanceToDeflect = amplifier / 10f + 0.3f;
-		return chanceToDeflect;
+		//level 1: 30
+		//level 2: 40
+		//level 3: 50
+		//level 4: 60
+		//level 5: 70
+		return amplifier / 10f + 0.3f;
 	}
 }
