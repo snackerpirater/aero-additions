@@ -116,7 +116,7 @@ public class AASpells {
 		public static final DeferredHolder<MobEffect, MobEffect> WIND_SHIELD = MOB_EFFECTS.register("wind_shield", () -> new WindShieldEffect(MobEffectCategory.BENEFICIAL, 0xd3ebea));
 		public static final DeferredHolder<MobEffect, MobEffect> BREATHLESS = MOB_EFFECTS.register("breathless", () -> new BreathlessEffect(MobEffectCategory.HARMFUL, 0xd3ebea)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED,
-						Aeromancy.id( "breathless_snow"),
+						Aeromancy.id( "breathless_slow"),
 						-0.5f,
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE,

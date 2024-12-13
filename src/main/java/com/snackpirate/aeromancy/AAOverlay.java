@@ -3,7 +3,6 @@ package com.snackpirate.aeromancy;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.snackpirate.aeromancy.spells.AASpells;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

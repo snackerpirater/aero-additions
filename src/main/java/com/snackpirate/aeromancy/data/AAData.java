@@ -1,18 +1,15 @@
 package com.snackpirate.aeromancy.data;
 
 import com.snackpirate.aeromancy.Aeromancy;
-import com.snackpirate.aeromancy.spells.AASpells;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.world.damagesource.DamageType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -35,7 +32,6 @@ public class AAData extends DatapackBuiltinEntriesProvider {
 		CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 		DatapackBuiltinEntriesProvider datapackProvider = new AAData(output, provider);
 		DataGenerator generator = event.getGenerator();
-		ExistingFileHelper helper = event.getExistingFileHelper();
 		LanguageProvider lang;
 		lang = new AALang(output);
 		generator.addProvider(event.includeServer(), datapackProvider);

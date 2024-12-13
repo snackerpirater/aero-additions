@@ -5,7 +5,6 @@ import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.effect.MagicMobEffect;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -16,7 +15,7 @@ public class BreathlessEffect extends MagicMobEffect {
 
 	@Override
 	public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
-		livingEntity.hurt(DamageSources.get(livingEntity.level(), AADamageTypes.ASPHYXIATION), 1+(0.5f*amplifier));
+		livingEntity.hurt(DamageSources.get(livingEntity.level(), AADamageTypes.ASPHYXIATION), 1+(0.2f*amplifier));
 		return true;
 	}
 
