@@ -52,3 +52,10 @@ config="aeromancy.mixins.json"
     ordering="NONE"
     side="BOTH"
 
+[[dependencies.${mod_id}]]
+modId="irons_spellbooks"
+type="required"
+versionRange="[1.21-3.8.0,)"
+ordering="NONE"
+side="BOTH"
+
