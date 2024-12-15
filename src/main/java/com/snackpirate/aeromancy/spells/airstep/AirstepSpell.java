@@ -41,11 +41,11 @@ public class AirstepSpell extends AbstractSpell {
 				.setMaxLevel(5)
 				.setCooldownSeconds(20)
 				.build();
-		this.manaCostPerLevel = 1;
+		this.manaCostPerLevel = 5;
 		this.baseSpellPower = 3;
 		this.spellPowerPerLevel = 2;
 		this.castTime = 0;
-		this.baseManaCost = 20;
+		this.baseManaCost = 40;
 	}
 
 	@Override

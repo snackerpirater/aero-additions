@@ -117,11 +117,11 @@ public class AASpells {
 		public static final DeferredHolder<MobEffect, MobEffect> BREATHLESS = MOB_EFFECTS.register("breathless", () -> new BreathlessEffect(MobEffectCategory.HARMFUL, 0xd3ebea)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED,
 						Aeromancy.id( "breathless_slow"),
-						-0.5f,
+						-0.3f,
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE,
 						Aeromancy.id("breathless_weak"),
-						-0.5f,
+						-0.3f,
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 	}
 

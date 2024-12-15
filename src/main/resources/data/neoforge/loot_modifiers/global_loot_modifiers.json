@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "aero_additions:trial_chamber_modifiers/ominous_vault_modifier"
+    "aero_additions:trial_chamber_modifiers/ominous_vault_modifier",
+    "aero_additions:trial_chamber_modifiers/normal_vault_modifier"
   ]
 }
