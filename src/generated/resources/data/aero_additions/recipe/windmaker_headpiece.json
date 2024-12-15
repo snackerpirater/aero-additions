@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "irons_spellbooks:magic_cloth"
+    },
+    "R": {
+      "item": "aero_additions:wind_rune"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CRC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aero_additions:windmaker_headpiece"
+  }
+}

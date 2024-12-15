@@ -37,6 +37,6 @@ public class AAData extends DatapackBuiltinEntriesProvider {
 		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeClient(), lang);
 		generator.addProvider(event.includeServer(), new AAItemTags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty())));
-
+		generator.addProvider(event.includeServer(), new AARecipes(output, provider));
 	}
 }

@@ -9,6 +9,8 @@ import io.redspace.ironsspellbooks.capabilities.magic.ImpulseCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,12 +19,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 @AutoSpellConfig
 public class AirstepSpell extends AbstractSpell {
 	private final DefaultConfig defaultConfig;
 	@Override
 	public ResourceLocation getSpellResource() {
 		return Aeromancy.id("airstep");
+	}
+
+	@Override
+	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+		return List.of(Component.translatable("spell.aero_additions.airstep.max_jumps", spellLevel));
 	}
 
 	public AirstepSpell() {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "irons_spellbooks:magic_cloth"
+    },
+    "R": {
+      "item": "aero_additions:wind_rune"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "CCS",
+    " RC",
+    "S C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aero_additions:air_staff"
+  }
+}

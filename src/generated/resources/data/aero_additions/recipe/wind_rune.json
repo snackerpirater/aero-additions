@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:breeze_rod"
+    },
+    "R": {
+      "item": "irons_spellbooks:blank_rune"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BRB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aero_additions:wind_rune"
+  }
+}

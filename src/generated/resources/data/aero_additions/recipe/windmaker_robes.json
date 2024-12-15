@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "irons_spellbooks:magic_cloth"
+    },
+    "R": {
+      "item": "aero_additions:wind_rune"
+    }
+  },
+  "pattern": [
+    "CRC",
+    "CCC",
+    "CCC"
+  ],
+  "result": {
+    "components": {
+      "irons_spellbooks:spell_container": {
+        "data": [],
+        "maxSpells": 1,
+        "mustEquip": true,
+        "spellWheel": true
+      }
+    },
+    "count": 1,
+    "id": "aero_additions:windmaker_robes"
+  }
+}

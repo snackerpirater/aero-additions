@@ -16,6 +16,7 @@
   "school.aero_additions.wind": "Wind",
   "spell.aero_additions.airstep": "Airstep",
   "spell.aero_additions.airstep.guide": "Execute a series of mid-air jumps, in rapid succession.",
+  "spell.aero_additions.airstep.max_jumps": "%s Jumps",
   "spell.aero_additions.asphyxiate": "Asphyxiate",
   "spell.aero_additions.asphyxiate.guide": "Draw the air out of the target's lungs, slowly killing them.",
   "spell.aero_additions.feather_fall": "Feather Fall",

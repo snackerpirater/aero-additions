@@ -27,6 +27,7 @@ public class AALang extends LanguageProvider {
 		add("ui.aero_additions.recast_targets", "%s Targets");
 		addSpell(AASpells.UPDRAFT.get(), "Updraft", "Launch enemies into the air, temporarily stunning them.");
 		addSpell(AASpells.AIRSTEP.get(), "Airstep", "Execute a series of mid-air jumps, in rapid succession.");
+		add("spell.aero_additions.airstep.max_jumps", "%s Jumps");
 		addSpell(AASpells.ASPHYXIATE.get(), "Asphyxiate", "Draw the air out of the target's lungs, slowly killing them.");
 		addSpell(AASpells.FEATHER_FALL.get(), "Feather Fall", "Give you and your nearby allies the Slow Falling effect.");
 		addItem(AAItems.AIR_STAFF, "Air Staff");
@@ -43,8 +44,8 @@ public class AALang extends LanguageProvider {
 		addEffect(AASpells.MobEffects.BREATHLESS, "Breathless");
 		addEffect(AASpells.MobEffects.WIND_SHIELD, "Wind Shielded");
 		addSpell(AASpells.WIND_SHIELD.get(), "Wind Shield", "Form a swirling shield of air around your body, reflecting any projectile coming your way.");
-		add("itemGroup.aero_additions.main_tab", "Aeromancy Additions");
 		add("spell.aero_additions.wind_shield.chance", "%s%% Chance To Deflect Projectiles");
+		add("itemGroup.aero_additions.main_tab", "Aeromancy Additions");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

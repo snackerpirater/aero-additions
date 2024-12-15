@@ -8,7 +8,6 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.spells.eldritch.EldritchBlastSpell;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +31,7 @@ public class UpdraftSpell extends AbstractSpell {
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
 		return List.of(
 				Component.translatable("ui.aero_additions.stun_duration", Utils.stringTruncation(getStunDuration(spellLevel) / 20f, 2)),
-				Component.translatable("ui.aero_additions.recast_targets", this.getRecastCount(spellLevel, caster)));
+				Component.translatable("ui.irons_spellbooks.max_victims", this.getRecastCount(spellLevel, caster)));
 	}
 
 	public UpdraftSpell() {
