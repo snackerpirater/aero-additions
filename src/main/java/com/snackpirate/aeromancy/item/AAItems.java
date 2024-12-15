@@ -39,7 +39,7 @@ public class AAItems {
 			));
 	public static final DeferredHolder<Item, Item> UPDRAFT_TOME = ITEMS.register("updraft_tome", () -> new UniqueSpellBook(
 			new SpellDataRegistryHolder[]{
-					new SpellDataRegistryHolder(AASpells.UPDRAFT, 5)
+					new SpellDataRegistryHolder(AASpells.UPDRAFT, 7)
 			},
 			7).withSpellbookAttributes(
 					new AttributeContainer(AASpells.Attributes.WIND_SPELL_POWER, .10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
