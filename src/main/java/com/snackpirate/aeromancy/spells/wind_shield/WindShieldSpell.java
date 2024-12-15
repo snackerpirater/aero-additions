@@ -32,7 +32,8 @@ public class WindShieldSpell extends AbstractSpell {
 				Component.translatable("spell.aero_additions.wind_shield.chance", Utils.stringTruncation(chanceToDeflect(spellLevel-1)*100, 2)
 				));
 	}
-		@Override
+
+	@Override
 	public ResourceLocation getSpellResource() {
 		return Aeromancy.id("wind_shield");
 	}
@@ -46,6 +47,7 @@ public class WindShieldSpell extends AbstractSpell {
 				.setCooldownSeconds(120)
 				.build();
 	}
+
 	@Override
 	public CastType getCastType() {
 		return CastType.LONG;

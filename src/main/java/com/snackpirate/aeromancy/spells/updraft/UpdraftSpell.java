@@ -36,7 +36,7 @@ public class UpdraftSpell extends AbstractSpell {
 
 	public UpdraftSpell() {
 		this.defaultConfig = (new DefaultConfig()).setMinRarity(SpellRarity.RARE).setSchoolResource(AASpells.Schools.WIND_RESOURCE).setMaxLevel(7).setCooldownSeconds(15.0).build();
-		this.manaCostPerLevel = 15;
+		this.manaCostPerLevel = 20;
 		this.baseSpellPower = 3;
 		this.spellPowerPerLevel = 2;
 		this.castTime = 0;
