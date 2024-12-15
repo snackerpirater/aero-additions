@@ -32,6 +32,7 @@ public class AALang extends LanguageProvider {
 		addSpell(AASpells.FEATHER_FALL.get(), "Feather Fall", "Give you and your nearby allies the Slow Falling effect.");
 		addItem(AAItems.AIR_STAFF, "Air Staff");
 		addItem(AAItems.UPDRAFT_TOME, "Updraft Tome");
+		add(AAItems.UPDRAFT_TOME.get().getDescriptionId() + ".guide", "Can be obtained from Ominous Vaults in Trial Chambers.");
 		add("attribute.aero_additions.wind_spell_power", "Wind Spell Power");
 		add("attribute.aero_additions.wind_magic_resist", "Wind Spell Resistance");
 		addItem(AAItems.WIND_RUNE, "Wind Rune");

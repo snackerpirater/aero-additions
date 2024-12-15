@@ -1,7 +1,6 @@
 package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.spells.AASpells;
-import com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,7 +27,6 @@ public class AAServerEvents {
 		@SubscribeEvent
 		public static void windShieldDeflection(ProjectileImpactEvent event) {
 			if (event.getRayTraceResult() instanceof EntityHitResult result && result.getEntity() instanceof LivingEntity entity) {
-				//TODO: chance to deflect magic projectiles based on amplifier
 				//level 1: 30
 				//level 2: 40
 				//level 3: 50
@@ -43,5 +41,7 @@ public class AAServerEvents {
 				}
 			}
 		}
+
+
 	}
 }

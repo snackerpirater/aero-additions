@@ -47,13 +47,12 @@ public class AACreativeTab {
 	public static void fillCreativeTabs(final BuildCreativeModeTabContentsEvent event) {
 		if (/*event.getTab() == CreativeModeTabs.searchTab() || */event.getTab() == MAIN_TAB.get()) {
 			SpellRegistry.getEnabledSpells().stream()
-					.filter(spellType -> spellType != SpellRegistry.none())
-					.filter(spell -> ServerConfigs.getSpellConfig(spell).school().equals(AASpells.Schools.WIND))
+					.filter(spellType -> spellType != SpellRegistry.none() && spellType.getSchoolType().equals(AASpells.Schools.WIND.get()))
 					.forEach(spell -> {
 						for (int i = spell.getMinLevel(); i <= spell.getMaxLevel(); i++) {
 							var itemstack = new ItemStack(ItemRegistry.SCROLL.get());
 							var spellList = ISpellContainer.createScrollContainer(spell, i, itemstack);
-							//spellList.save(itemstack);
+//							spellList.save(itemstack);
 							event.accept(itemstack);
 						}
 					});
