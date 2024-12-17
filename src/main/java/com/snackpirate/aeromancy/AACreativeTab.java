@@ -43,7 +43,6 @@ public class AACreativeTab {
 			.build());
 
 	@SubscribeEvent
-	//TODO: get this to work!
 	public static void fillCreativeTabs(final BuildCreativeModeTabContentsEvent event) {
 		if (/*event.getTab() == CreativeModeTabs.searchTab() || */event.getTab() == MAIN_TAB.get()) {
 			SpellRegistry.getEnabledSpells().stream()
