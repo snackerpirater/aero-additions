@@ -17,11 +17,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 @AutoSpellConfig
 public class UpdraftSpell extends AbstractSpell {
@@ -69,7 +72,23 @@ public class UpdraftSpell extends AbstractSpell {
 
 	@Override
 	public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-		return Utils.preCastTargetHelper(level, entity, playerMagicData, this, 64, 0.15F);
+		boolean b = Utils.preCastTargetHelper(level, entity, playerMagicData, this, 64, 0.15F);
+		if (b) {
+			ICastData var7 = playerMagicData.getAdditionalCastData();
+			if (var7 instanceof TargetEntityCastData targetEntityCastData) {
+				PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
+				if (recasts.hasRecastForSpell(this.getSpellId())) {
+					RecastInstance instance = recasts.getRecastInstance(this.getSpellId());
+					if (instance != null) {
+						ICastDataSerializable var10 = instance.getCastData();
+						if (var10 instanceof MultiTargetEntityCastData targetingData) {
+							if (targetingData.getTargets().contains(targetEntityCastData.getTargetUUID())) return false;
+						}
+					}
+				}
+			}
+		}
+		return b;
 	}
 
 	@Override

@@ -56,7 +56,7 @@ public class FeatherFallSpell extends AbstractSpell {
 		this.manaCostPerLevel = 15;
 		this.baseSpellPower = 30;
 		this.spellPowerPerLevel = 5;
-		this.castTime = 30;
+		this.castTime = 20;
 		this.baseManaCost = 50;
 	}
 
