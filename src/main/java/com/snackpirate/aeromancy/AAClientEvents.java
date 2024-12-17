@@ -9,7 +9,6 @@ import io.redspace.ironsspellbooks.render.*;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.resources.PlayerSkin;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,12 +31,12 @@ public class AAClientEvents {
 		addLayerToPlayerSkin(event, PlayerSkin.Model.SLIM);
 		addLayerToPlayerSkin(event, PlayerSkin.Model.WIDE);
 
-		for (EntityType<?> type : event.getEntityTypes()) {
-			var renderer = event.getRenderer(type);
-			if (renderer instanceof GeoLivingEntityRenderer geoRenderer) {
-				geoRenderer.addRenderLayer(new WindySwirlRenderer.Geo(geoRenderer, Aeromancy.id("textures/entity/wind_shield_layer.png"), 256L));
-			}
-		}
+//		for (EntityType<?> type : event.getEntityTypes()) {
+//			var renderer = event.getRenderer(type);
+//			if (renderer instanceof GeoLivingEntityRenderer geoRenderer) {
+//				geoRenderer.addRenderLayer(new WindySwirlRenderer.Geo(geoRenderer, Aeromancy.id("textures/entity/wind_shield_layer.png"), 256L));
+//			}
+//		}
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
