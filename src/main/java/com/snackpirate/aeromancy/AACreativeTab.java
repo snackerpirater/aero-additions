@@ -4,7 +4,6 @@ import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
-import io.redspace.ironsspellbooks.config.ServerConfigs;
 import io.redspace.ironsspellbooks.registries.CreativeTabRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.registries.Registries;
@@ -26,7 +25,7 @@ public class AACreativeTab {
 	public static void register(IEventBus eventBus) {
 		TABS.register(eventBus);
 	}
-	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = TABS.register("spellbook_equipment", () -> CreativeModeTab.builder()
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = TABS.register("aeromancy_main", () -> CreativeModeTab.builder()
 			.title(Component.translatable("itemGroup." + Aeromancy.MOD_ID + ".main_tab"))
 			.icon(() -> new ItemStack(AAItems.UPDRAFT_TOME))
 			.displayItems((enabledFeatures, entries) -> {

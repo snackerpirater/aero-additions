@@ -1,0 +1,18 @@
+{
+  "descriptionId": "material.aero_additions.rune_wind",
+  "ingredient": {
+    "item": "aero_additions:wind_rune"
+  },
+  "materialType": [
+    "spellbooks_rune"
+  ],
+  "paletteLocation": "aero_additions:palettes/rune_wind",
+  "quality": 1.5,
+  "bonusParameters": {
+    "irons_jewelry:attribute": {
+      "attribute": "aero_additions:wind_spell_power",
+      "amount": 0.05,
+      "operation": "add_multiplied_total"
+    }
+  }
+}

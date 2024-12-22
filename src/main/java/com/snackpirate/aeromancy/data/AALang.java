@@ -47,6 +47,7 @@ public class AALang extends LanguageProvider {
 		addSpell(AASpells.WIND_SHIELD.get(), "Wind Shield", "Form a swirling shield of air around your body, reflecting any projectile coming your way.");
 		add("spell.aero_additions.wind_shield.chance", "%s%% Chance To Deflect Projectiles");
 		add("itemGroup.aero_additions.main_tab", "Aeromancy Additions");
+		add("material.aero_additions.rune_wind", "Wind Rune");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);
