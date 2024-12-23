@@ -48,6 +48,10 @@ public class AALang extends LanguageProvider {
 		add("spell.aero_additions.wind_shield.chance", "%s%% Chance To Deflect Projectiles");
 		add("itemGroup.aero_additions.main_tab", "Aeromancy Additions");
 		add("material.aero_additions.rune_wind", "Wind Rune");
+		addSpell(AASpells.AIRBLAST.get(), "Airblast", "Quickly fire a small gust of air, capable of reflecting projectiles. Mmmph mmmph!");
+		add("spell.aero_additions.airblast.max_range", "%s Block Range");
+		add("spell.aero_additions.airblast.deflection_power", "%s%% Reflection Power");
+		add("spell.aero_additions.airblast.degree_width", "%s° Area Width");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

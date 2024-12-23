@@ -94,7 +94,7 @@ public class AirstepSpell extends AbstractSpell {
 		}
 		Vec3 motion = new Vec3(0, entity.getAttributeValue(Attributes.JUMP_STRENGTH) + entity.getJumpBoostPower() + 0.02*getSpellPower(spellLevel, entity), 0);
 		Vec3 angle = entity.getLookAngle();
-		motion = angle.scale(Mth.invSqrt(angle.x*angle.x + angle.z*angle.z)).multiply(0.45 + 0.02*getSpellPower(spellLevel, entity), 0, 0.45 + 0.02*getSpellPower(spellLevel, entity)).add(motion);
+		motion = angle.scale(Mth.invSqrt(angle.x*angle.x + angle.z*angle.z + 0.01f)).multiply(0.45 + 0.02*getSpellPower(spellLevel, entity), 0, 0.45 + 0.02*getSpellPower(spellLevel, entity)).add(motion);
 		playerMagicData.setAdditionalCastData(new ImpulseCastData((float) motion.x, (float) motion.y, (float) motion.z, true));
 		entity.setDeltaMovement(motion);
 		MagicManager.spawnParticles(level, ParticleTypes.SPIT, entity.getX(), entity.getY(), entity.getZ(), 10, 0.2, 0, 0.2, 0.3, true);

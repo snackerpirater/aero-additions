@@ -5,6 +5,7 @@ import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.AASounds;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.data.AAItemTags;
+import com.snackpirate.aeromancy.spells.airblast.AirblastSpell;
 import com.snackpirate.aeromancy.spells.airstep.AirstepSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.AsphyxiateSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.BreathlessEffect;
@@ -59,6 +60,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> ASPHYXIATE = registerSpell(new AsphyxiateSpell());
 	public static final Supplier<AbstractSpell> FEATHER_FALL = registerSpell(new FeatherFallSpell());
 	public static final Supplier<AbstractSpell> WIND_SHIELD = registerSpell(new WindShieldSpell());
+	public static final Supplier<AbstractSpell> AIRBLAST = registerSpell(new AirblastSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);
