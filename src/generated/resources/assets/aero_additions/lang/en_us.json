@@ -18,7 +18,7 @@
   "school.aero_additions.wind": "Wind",
   "spell.aero_additions.airblast": "Airblast",
   "spell.aero_additions.airblast.deflection_power": "%s%% Reflection Power",
-  "spell.aero_additions.airblast.degree_width": "%s° Area Width",
+  "spell.aero_additions.airblast.degree_width": "%s° Arc",
   "spell.aero_additions.airblast.guide": "Quickly fire a small gust of air, capable of reflecting projectiles. Mmmph mmmph!",
   "spell.aero_additions.airblast.max_range": "%s Block Range",
   "spell.aero_additions.airstep": "Airstep",

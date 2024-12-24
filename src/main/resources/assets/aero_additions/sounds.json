@@ -3,5 +3,17 @@
     "sounds": [
       "aero_additions:generic/wind_cast"
     ]
+  },
+
+  "cast.generic.airblast": {
+    "sounds": [
+      "aero_additions:generic/airblast_woosh"
+    ]
+  },
+
+  "cast.generic.airblast_success": {
+    "sounds": [
+      "aero_additions:generic/airblast_redirect_success"
+    ]
   }
 }

@@ -51,7 +51,7 @@ public class AALang extends LanguageProvider {
 		addSpell(AASpells.AIRBLAST.get(), "Airblast", "Quickly fire a small gust of air, capable of reflecting projectiles. Mmmph mmmph!");
 		add("spell.aero_additions.airblast.max_range", "%s Block Range");
 		add("spell.aero_additions.airblast.deflection_power", "%s%% Reflection Power");
-		add("spell.aero_additions.airblast.degree_width", "%s° Area Width");
+		add("spell.aero_additions.airblast.degree_width", "%s° Arc");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);
