@@ -10,6 +10,8 @@ import com.snackpirate.aeromancy.spells.airstep.AirstepSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.AsphyxiateSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.BreathlessEffect;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
+import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
+import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindCharge;
@@ -21,6 +23,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
+import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.item.armor.UpgradeType;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -61,6 +64,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> FEATHER_FALL = registerSpell(new FeatherFallSpell());
 	public static final Supplier<AbstractSpell> WIND_SHIELD = registerSpell(new WindShieldSpell());
 	public static final Supplier<AbstractSpell> AIRBLAST = registerSpell(new AirblastSpell());
+	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);
@@ -75,6 +79,12 @@ public class AASpells {
 				.sized(0.5f,0.5f)
 				.clientTrackingRange(64)
 				.build(Aeromancy.id("updraft_visual").toString()));
+
+		public static final DeferredHolder<EntityType<?>, EntityType<SummonedBreeze>> SUMMONED_BREEZE =
+				ENTITIES.register("summoned_breeze", () -> EntityType.Builder.<SummonedBreeze>of(SummonedBreeze::new, MobCategory.CREATURE)
+						.sized(0.6f, 1.77f)
+						.clientTrackingRange(64)
+						.build(Aeromancy.id("summoned_breeze").toString()));
 	}
 
 	public static class Schools {
@@ -125,6 +135,8 @@ public class AASpells {
 						Aeromancy.id("breathless_weak"),
 						-0.3f,
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+		public static final DeferredHolder<MobEffect, SummonTimer> BREEZE_TIMER = MOB_EFFECTS.register("breeze_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
 	}
 
 	public enum UpgradeTypes implements UpgradeType {

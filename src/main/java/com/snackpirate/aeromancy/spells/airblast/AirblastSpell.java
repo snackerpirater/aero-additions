@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -56,11 +57,11 @@ public class AirblastSpell extends AbstractSpell {
 				.setSchoolResource(AASpells.Schools.WIND_RESOURCE)
 				.setMinRarity(SpellRarity.RARE)
 				.build();
-		this.manaCostPerLevel = 7;
+		this.manaCostPerLevel = 4;
 		this.baseSpellPower = 5;
 		this.spellPowerPerLevel = 1;
 		this.castTime = 0;
-		this.baseManaCost = 40;
+		this.baseManaCost = 30;
 	}
 	@Override
 	public CastType getCastType() {
@@ -95,10 +96,12 @@ public class AirblastSpell extends AbstractSpell {
 		if (deflector != null) {
 			Vec3 vec3 = deflector.getLookAngle().normalize();
 			if (deflector instanceof Player p) vec3 = vec3.scale(0.15*(this.getSpellPower(spellLevel, p)));
+			projectile.setOwner(deflector);
 			projectile.setDeltaMovement(vec3);
 			projectile.hasImpulse = true;
 		}
 	}
+
 	@Override
 	public Optional<SoundEvent> getCastStartSound() {
 		return AASounds.AIRBLAST_CAST.asOptional();

@@ -6,6 +6,7 @@ import com.snackpirate.aeromancy.spells.updraft.UpdraftVisualRenderer;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindChargeRenderer;
 import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
 import io.redspace.ironsspellbooks.render.*;
+import net.minecraft.client.renderer.entity.BreezeRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.resources.PlayerSkin;
@@ -23,6 +24,7 @@ public class AAClientEvents {
 	public static void rendererRegister(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(AASpells.Entities.MAGIC_WIND_CHARGE.get(), MagicWindChargeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.UPDRAFT_VISUAL_ENTITY.get(), UpdraftVisualRenderer::new);
+		event.registerEntityRenderer(AASpells.Entities.SUMMONED_BREEZE.get(), BreezeRenderer::new);
 		CuriosRendererRegistry.register(AAItems.UPDRAFT_TOME.get(), SpellBookCurioRenderer::new);
 	}
 
