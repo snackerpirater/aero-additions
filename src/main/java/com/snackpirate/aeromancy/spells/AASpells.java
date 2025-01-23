@@ -64,7 +64,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> FEATHER_FALL = registerSpell(new FeatherFallSpell());
 	public static final Supplier<AbstractSpell> WIND_SHIELD = registerSpell(new WindShieldSpell());
 	public static final Supplier<AbstractSpell> AIRBLAST = registerSpell(new AirblastSpell());
-	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
+//	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);

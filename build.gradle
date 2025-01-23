@@ -147,7 +147,7 @@ dependencies {
     compileOnly "io.redspace:irons_spellbooks:${irons_spells_version}:api"
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
 
-    runtimeOnly "io.redspace:irons_jewelry:1.0.0"
+    runtimeOnly "io.redspace:irons_jewelry:1.0.2"
     localRuntime "io.redspace:atlas_api:1.21-1.0.1"
     localRuntime "dev.shadowsoffire:ApothicAttributes:${minecraft_version}-2.2.2"
     localRuntime "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
