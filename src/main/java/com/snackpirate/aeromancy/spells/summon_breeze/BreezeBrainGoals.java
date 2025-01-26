@@ -2,6 +2,8 @@ package com.snackpirate.aeromancy.spells.summon_breeze;
 
 import com.snackpirate.aeromancy.Aeromancy;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
+import io.redspace.ironsspellbooks.item.curios.AffinityRing;
+import io.redspace.ironsspellbooks.render.AffinityRingRenderer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;

@@ -8,6 +8,8 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.render.AffinityRingRenderer;
+import io.redspace.ironsspellbooks.spells.fire.FlamingStrikeSpell;
 import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;

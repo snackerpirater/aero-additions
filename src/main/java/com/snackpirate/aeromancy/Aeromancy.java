@@ -3,6 +3,7 @@ package com.snackpirate.aeromancy;
 import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.spells.fire.FireboltSpell;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
