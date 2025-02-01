@@ -2,15 +2,13 @@ package com.snackpirate.aeromancy.spells.airblast;
 
 import com.snackpirate.aeromancy.AASounds;
 import com.snackpirate.aeromancy.Aeromancy;
+import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.render.AffinityRingRenderer;
-import io.redspace.ironsspellbooks.spells.fire.FlamingStrikeSpell;
-import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -75,7 +73,14 @@ public class AirblastSpell extends AbstractSpell {
 	//Higher levels increases height of detection cone? (range)
 	//power increases reflect velocity
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-		level.getEntitiesOfClass(Projectile.class, entity.getBoundingBox().inflate(getRadius(spellLevel))).stream().filter(proj -> proj.distanceTo(entity) < getRadius(spellLevel) && !Objects.equals(proj.getOwner(), entity)).forEach(e -> {
+		level.getEntitiesOfClass(Projectile.class,
+				entity.getBoundingBox()
+						.inflate(getRadius(spellLevel)))
+				.stream()
+				.filter(proj -> proj.distanceTo(entity) < getRadius(spellLevel) &&
+						!Objects.equals(proj.getOwner(), entity) &&
+						canBeAirblasted(proj))
+				.forEach(e -> {
 			Vec3 casterToProj = e.getPosition(0f).subtract(entity.getEyePosition()).normalize();
 			Vec3 casterLookAngle = entity.getLookAngle().normalize();
 			float projToLookAngleDeg = (float) Math.acos(casterToProj.dot(casterLookAngle)) * Mth.RAD_TO_DEG;
@@ -107,6 +112,9 @@ public class AirblastSpell extends AbstractSpell {
 	@Override
 	public Optional<SoundEvent> getCastStartSound() {
 		return AASounds.AIRBLAST_CAST.asOptional();
+	}
+	public static boolean canBeAirblasted(Projectile p) {
+		return !p.getType().is(AAEntityTypeTags.REFLECTION_IMMUNE);
 	}
 }
 

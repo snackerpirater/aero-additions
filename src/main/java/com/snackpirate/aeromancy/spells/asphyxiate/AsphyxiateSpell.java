@@ -1,6 +1,7 @@
 package com.snackpirate.aeromancy.spells.asphyxiate;
 
 import com.snackpirate.aeromancy.Aeromancy;
+import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -60,7 +61,7 @@ public class AsphyxiateSpell extends AbstractSpell {
 	public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
 		if (Utils.preCastTargetHelper(level, entity, playerMagicData, this, 15, .15f)) {
 			var target = ((TargetEntityCastData) playerMagicData.getAdditionalCastData()).getTarget((ServerLevel) level);
-			if (target == null) {
+			if (target == null || target.getType().is(AAEntityTypeTags.ASPHYXIATION_IMMUNE)) {
 				return false;
 			}
 			playerMagicData.setAdditionalCastData(new TargetEntityCastData(target));

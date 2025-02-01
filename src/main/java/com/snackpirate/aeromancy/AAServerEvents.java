@@ -1,5 +1,6 @@
 package com.snackpirate.aeromancy;
 
+import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -45,7 +46,7 @@ public class AAServerEvents {
 				//level 3: 50
 				//level 4: 60
 				//level 5: 70
-				if (entity.hasEffect(AASpells.MobEffects.WIND_SHIELD)) {
+				if (entity.hasEffect(AASpells.MobEffects.WIND_SHIELD) && !event.getProjectile().getType().is(AAEntityTypeTags.REFLECTION_IMMUNE)) {
 					if (entity.getRandom().nextFloat() < chanceToDeflect(entity.getEffect(AASpells.MobEffects.WIND_SHIELD).getAmplifier())) {
 						event.setCanceled(true);
 						entity.level().playSound(null, entity, SoundEvents.BREEZE_DEFLECT, entity.getSoundSource(), 1f, 1f);

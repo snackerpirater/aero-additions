@@ -10,6 +10,7 @@ import net.minecraft.data.tags.TagsProvider;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -32,11 +33,13 @@ public class AAData extends DatapackBuiltinEntriesProvider {
 		CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 		DatapackBuiltinEntriesProvider datapackProvider = new AAData(output, provider);
 		DataGenerator generator = event.getGenerator();
+		ExistingFileHelper helper = event.getExistingFileHelper();
 		LanguageProvider lang;
 		lang = new AALang(output);
 		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeClient(), lang);
 		generator.addProvider(event.includeServer(), new AAItemTags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty())));
 		generator.addProvider(event.includeServer(), new AARecipes(output, provider));
+		generator.addProvider(event.includeServer(), new AAEntityTypeTags(output, provider, Aeromancy.MOD_ID, helper));
 	}
 }
