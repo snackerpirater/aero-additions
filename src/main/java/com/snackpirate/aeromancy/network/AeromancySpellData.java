@@ -95,8 +95,8 @@
 //
 //
 //	@Override
-//	protected SyncedSpellData clone() {
-//		return new SyncedSpellData(this.livingEntity);
+//	protected AeromancySpellData clone() {
+//		return new AeromancySpellData(this.livingEntity);
 //	}
 //
 //	public AeromancySpellData getPersistentData(ServerPlayer serverPlayer) {

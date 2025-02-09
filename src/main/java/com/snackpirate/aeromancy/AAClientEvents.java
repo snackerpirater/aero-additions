@@ -3,6 +3,8 @@ package com.snackpirate.aeromancy;
 import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftVisualRenderer;
+import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
+import com.snackpirate.aeromancy.spells.wind_blade.WindBladeRenderer;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindChargeRenderer;
 import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
 import io.redspace.ironsspellbooks.render.*;
@@ -25,6 +27,7 @@ public class AAClientEvents {
 		event.registerEntityRenderer(AASpells.Entities.MAGIC_WIND_CHARGE.get(), MagicWindChargeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.UPDRAFT_VISUAL_ENTITY.get(), UpdraftVisualRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.SUMMONED_BREEZE.get(), BreezeRenderer::new);
+		event.registerEntityRenderer(AASpells.Entities.WIND_BLADE_PROJECTILE.get(), WindBladeRenderer::new);
 		CuriosRendererRegistry.register(AAItems.UPDRAFT_TOME.get(), SpellBookCurioRenderer::new);
 	}
 

@@ -61,6 +61,16 @@ public class AARecipes extends RecipeProvider {
 				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
 				.save(recipeOutput);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WIND_SWORD.get(), 1)
+				.pattern(" BR")
+				.pattern(" WB")
+				.pattern("B  ")
+				.define('B', Items.BREEZE_ROD)
+				.define('W', ItemRegistry.WEAPON_PARTS.get())
+				.define('R', AAItems.WIND_RUNE.get())
+				.unlockedBy("has_weapon_parts", has(ItemRegistry.WEAPON_PARTS.get()))
+				.save(recipeOutput);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AAItems.WIND_RUNE.get(), 1)
 				.pattern("BBB")
 				.pattern("BRB")

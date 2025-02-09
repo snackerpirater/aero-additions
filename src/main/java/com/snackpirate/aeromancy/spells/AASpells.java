@@ -9,21 +9,27 @@ import com.snackpirate.aeromancy.spells.airblast.AirblastSpell;
 import com.snackpirate.aeromancy.spells.airstep.AirstepSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.AsphyxiateSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.BreathlessEffect;
+import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
+import com.snackpirate.aeromancy.spells.flush.FlushSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
+import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
+import com.snackpirate.aeromancy.spells.wind_blade.WindBladeSpell;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindCharge;
 import com.snackpirate.aeromancy.spells.wind_charge.WindChargeSpell;
 import com.snackpirate.aeromancy.spells.wind_shield.WindShieldEffect;
 import com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.effect.SummonTimer;
+import io.redspace.ironsspellbooks.entity.spells.firebolt.FireboltProjectile;
 import io.redspace.ironsspellbooks.item.armor.UpgradeType;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -64,6 +70,9 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> FEATHER_FALL = registerSpell(new FeatherFallSpell());
 	public static final Supplier<AbstractSpell> WIND_SHIELD = registerSpell(new WindShieldSpell());
 	public static final Supplier<AbstractSpell> AIRBLAST = registerSpell(new AirblastSpell());
+	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
+	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
+	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
@@ -85,6 +94,13 @@ public class AASpells {
 						.sized(0.6f, 1.77f)
 						.clientTrackingRange(64)
 						.build(Aeromancy.id("summoned_breeze").toString()));
+
+
+		public static final DeferredHolder<EntityType<?>, EntityType<WindBladeProjectile>> WIND_BLADE_PROJECTILE =
+				ENTITIES.register("wind_blade", () -> EntityType.Builder.<WindBladeProjectile>of(WindBladeProjectile::new, MobCategory.MISC)
+						.sized(.5f, .5f)
+						.clientTrackingRange(64)
+						.build(Aeromancy.id("wind_blade").toString()));
 	}
 
 	public static class Schools {

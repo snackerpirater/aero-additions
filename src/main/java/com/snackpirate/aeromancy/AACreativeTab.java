@@ -33,6 +33,7 @@ public class AACreativeTab {
 				entries.accept(AAItems.WIND_UPGRADE_ORB.get());
 				entries.accept(AAItems.UPDRAFT_TOME.get());
 				entries.accept(AAItems.AIR_STAFF.get());
+				entries.accept(AAItems.WIND_SWORD.get());
 				entries.accept(AAItems.WINDMAKER_HEADPIECE.get());
 				entries.accept(AAItems.WINDMAKER_ROBES.get());
 				entries.accept(AAItems.WINDMAKER_SKIRT.get());

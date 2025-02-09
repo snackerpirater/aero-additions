@@ -39,7 +39,7 @@ public class AirstepSpell extends AbstractSpell {
 				.setMinRarity(SpellRarity.RARE)
 				.setSchoolResource(AASpells.Schools.WIND_RESOURCE)
 				.setMaxLevel(7)
-				.setCooldownSeconds(13)
+				.setCooldownSeconds(6)
 				.build();
 		this.manaCostPerLevel = 7;
 		this.baseSpellPower = 1;
@@ -65,7 +65,7 @@ public class AirstepSpell extends AbstractSpell {
 
 	@Override
 	public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
-		return spellLevel;
+		return 1+spellLevel;
 	}
 
 	@Override

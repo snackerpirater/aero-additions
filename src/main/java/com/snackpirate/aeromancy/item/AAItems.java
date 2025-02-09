@@ -2,20 +2,21 @@ package com.snackpirate.aeromancy.item;
 
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.spells.AASpells;
+import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.item.UniqueSpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -53,4 +54,15 @@ public class AAItems {
 	public static final DeferredHolder<Item, Item> WINDMAKER_ROBES = ITEMS.register("windmaker_robes", () -> new WindmakerRobeItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
 	public static final DeferredHolder<Item, Item> WINDMAKER_SKIRT = ITEMS.register("windmaker_leggings", () -> new WindmakerRobeItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
 	public static final DeferredHolder<Item, Item> WINDMAKER_BOOTS = ITEMS.register("windmaker_boots", () -> new WindmakerRobeItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.BOOTS.getDurability(37))));
+
+	public static final DeferredHolder<Item, Item> WIND_SWORD = ITEMS.register("wind_sword", () -> new MagicSwordItem(
+			Tiers.DIAMOND,
+			ItemPropertiesHelper.equipment(1).rarity(Rarity.EPIC).durability(Tiers.DIAMOND.getUses()).attributes(
+					ItemAttributeModifiers.builder()
+							.add(AASpells.Attributes.WIND_SPELL_POWER, new AttributeModifier(Aeromancy.id("wind_sword_power"), .1f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.HAND)
+							.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
+							.add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
+							.add(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(Aeromancy.id("wind_sword_kb"), 1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND).build()),
+			new SpellDataRegistryHolder[]{new SpellDataRegistryHolder(AASpells.WIND_BLADE, 10)}
+			));
 }

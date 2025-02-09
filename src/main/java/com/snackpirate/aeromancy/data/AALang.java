@@ -52,6 +52,16 @@ public class AALang extends LanguageProvider {
 		add("spell.aero_additions.airblast.max_range", "%s Block Range");
 		add("spell.aero_additions.airblast.deflection_power", "%s%% Reflection Power");
 		add("spell.aero_additions.airblast.degree_width", "%s° Arc");
+		addItem(AAItems.WIND_SWORD, "Tempest Blade");
+		addEntityType(AASpells.Entities.WIND_BLADE_PROJECTILE, "Wind Blade");
+		add("death.attack.aero_additions.wind_blade", "%1$s was struck down by %2$s's Wind Blade");
+		addEntityType(AASpells.Entities.MAGIC_WIND_CHARGE, "Magic Wind Charge");
+		addEntityType(AASpells.Entities.UPDRAFT_VISUAL_ENTITY, "Gust");
+		addEntityType(AASpells.Entities.SUMMONED_BREEZE, "Summoned Breeze");
+		addSpell(AASpells.WIND_BLADE.get(), "Wind Blade", "Conjure a swiftly-moving blade of pure, swirling wind, dealing low damage but high knockback upon impact.");
+		addSpell(AASpells.FLUSH.get(), "Flush", "Expel a large quantity of water around you.");
+		addSpell(AASpells.DASH.get(), "Dash", "Quickly dash forward.");
+
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

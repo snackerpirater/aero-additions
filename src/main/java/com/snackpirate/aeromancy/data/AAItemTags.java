@@ -4,6 +4,7 @@ import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.Aeromancy;
 import io.redspace.ironsspellbooks.util.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,6 +34,15 @@ public class AAItemTags extends ItemTagsProvider {
 		tag(Tags.Items.ENCHANTABLES).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SWORD_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
-
+		tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.HEAD_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.CHEST_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.LEG_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.FOOT_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.SWORDS).add(AAItems.WIND_SWORD.get());
+		tag(Tags.Items.MELEE_WEAPON_TOOLS).add(AAItems.WIND_SWORD.get());
 	}
 }
