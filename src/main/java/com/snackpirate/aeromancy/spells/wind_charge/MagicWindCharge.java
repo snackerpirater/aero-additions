@@ -9,6 +9,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
@@ -32,9 +34,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagicSusceptible {
+public class MagicWindCharge extends WindCharge implements AntiMagicSusceptible {
 
-	public MagicWindCharge(EntityType<? extends Projectile> pEntityType, Level pLevel) {
+	protected float damage;
+
+	public MagicWindCharge(EntityType<? extends WindCharge> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
@@ -43,19 +47,30 @@ public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagi
 		setOwner(shooter);
 	}
 
-	@Override
 	public void trailParticles() {
 //		this.level().addParticle(ParticleTypes.GUST_EMITTER_SMALL, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
 	}
 
-	@Override
+	public void shoot(Vec3 rotation) {
+		setDeltaMovement(rotation.scale(getSpeed()));
+	}
+
+
 	public void impactParticles(double x, double y, double z) {
 
 	}
 
-	@Override
 	public float getSpeed() {
 		return 1.5f;
+	}
+
+
+	public void setDamage(float damage) {
+		this.damage = damage;
+	}
+
+	public float getDamage() {
+		return damage;
 	}
 
 	@Override
@@ -110,13 +125,7 @@ public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagi
 
 	}
 
-	@Override
-	public Optional<Holder<SoundEvent>> getImpactSound() {
-		return Optional.empty();
-	}
-
-	private void explode(Vec3 pos) {
-		Aeromancy.LOGGER.info("damage: " + this.getDamage());
+	protected void explode(Vec3 pos) {
 		this.level().explode(
 				this,
 				null,
@@ -145,4 +154,19 @@ public class MagicWindCharge extends AbstractMagicProjectile implements AntiMagi
 		this.explode(this.position());
 		this.discard();
 	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag tag) {
+		super.addAdditionalSaveData(tag);
+		tag.putFloat("Damage", this.getDamage());
+		tag.putInt("Age", tickCount);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		this.damage = tag.getFloat("Damage");
+		this.tickCount = tag.getInt("Age");
+	}
+
 }
