@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "aero_additions:wind_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_weapon_parts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "irons_spellbooks:weapon_parts"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_weapon_parts"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aero_additions:wind_sword"
+    ]
+  }
+}

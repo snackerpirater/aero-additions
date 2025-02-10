@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:breeze_rod"
+    },
+    "R": {
+      "item": "aero_additions:wind_rune"
+    },
+    "W": {
+      "item": "irons_spellbooks:weapon_parts"
+    }
+  },
+  "pattern": [
+    " BR",
+    " WB",
+    "B  "
+  ],
+  "result": {
+    "components": {
+      "irons_spellbooks:spell_container": {
+        "data": [
+          {
+            "id": "aero_additions:wind_blade",
+            "index": 0,
+            "level": 10,
+            "locked": true
+          }
+        ],
+        "maxSpells": 1,
+        "mustEquip": false,
+        "spellWheel": true
+      }
+    },
+    "count": 1,
+    "id": "aero_additions:wind_sword"
+  }
+}
