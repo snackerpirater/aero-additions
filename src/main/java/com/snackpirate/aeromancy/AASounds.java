@@ -22,5 +22,4 @@ public class AASounds {
 
 	public static DeferredHolder<SoundEvent, SoundEvent> WIND_CAST = registerSoundEvent("cast.generic.wind");
 	public static DeferredHolder<SoundEvent, SoundEvent> AIRBLAST_CAST = registerSoundEvent("cast.generic.airblast");
-	public static DeferredHolder<SoundEvent, SoundEvent> AIRBLAST_REDIRECT = registerSoundEvent("cast.generic.airblast_success");
 }

@@ -62,7 +62,7 @@ public class WindBladeSpell extends AbstractSpell {
 	}
 
 	private float getDamage(int spellLevel, LivingEntity entity) {
-		return getSpellPower(spellLevel, entity) * .25f;
+		return getSpellPower(spellLevel, entity) * .5f;
 	}
 
 }

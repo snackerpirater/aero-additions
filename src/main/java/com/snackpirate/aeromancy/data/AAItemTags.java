@@ -34,14 +34,17 @@ public class AAItemTags extends ItemTagsProvider {
 		tag(Tags.Items.ENCHANTABLES).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SWORD_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
+
 		tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_ROBES.get());
+		tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_SKIRT.get());
+		tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_BOOTS.get());
+
 		tag(ItemTags.HEAD_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.CHEST_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.LEG_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
-		tag(ItemTags.FOOT_ARMOR).add(AAItems.WINDMAKER_HEADPIECE.get());
+		tag(ItemTags.CHEST_ARMOR).add(AAItems.WINDMAKER_ROBES.get());
+		tag(ItemTags.LEG_ARMOR).add(AAItems.WINDMAKER_SKIRT.get());
+		tag(ItemTags.FOOT_ARMOR).add(AAItems.WINDMAKER_BOOTS.get());
+
 		tag(ItemTags.SWORDS).add(AAItems.WIND_SWORD.get());
 		tag(Tags.Items.MELEE_WEAPON_TOOLS).add(AAItems.WIND_SWORD.get());
 	}
