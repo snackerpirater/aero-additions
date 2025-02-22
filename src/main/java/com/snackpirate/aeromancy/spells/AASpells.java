@@ -14,6 +14,8 @@ import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
+import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
+import com.snackpirate.aeromancy.spells.tornado.TornadoSpell;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
@@ -29,11 +31,13 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.effect.SummonTimer;
+import io.redspace.ironsspellbooks.entity.spells.black_hole.BlackHole;
 import io.redspace.ironsspellbooks.entity.spells.firebolt.FireboltProjectile;
 import io.redspace.ironsspellbooks.item.armor.UpgradeType;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -41,10 +45,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -73,10 +79,12 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
+	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);
+		private static final DeferredRegister<EntityDataSerializer<?>> ENTITY_DATA_SERIALIZERS = DeferredRegister.create(NeoForgeRegistries.ENTITY_DATA_SERIALIZERS, Aeromancy.MOD_ID);
 
 		public static final DeferredHolder<EntityType<?>, EntityType<MagicWindCharge>> MAGIC_WIND_CHARGE =
 				ENTITIES.register("magic_wind_charge", () -> EntityType.Builder.<MagicWindCharge>of(MagicWindCharge::new, MobCategory.MISC)
@@ -101,6 +109,14 @@ public class AASpells {
 						.sized(.5f, .5f)
 						.clientTrackingRange(64)
 						.build(Aeromancy.id("wind_blade").toString()));
+
+		public static final DeferredHolder<EntityType<?>, EntityType<TornadoEntity>> TORNADO =
+				ENTITIES.register("tornado", () -> EntityType.Builder.<TornadoEntity>of(TornadoEntity::new, MobCategory.MISC)
+						.sized(10, 6)
+						.clientTrackingRange(64)
+						.build(Aeromancy.id("tornado").toString()));
+
+
 	}
 
 	public static class Schools {

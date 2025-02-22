@@ -13,6 +13,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -82,6 +83,7 @@ public class DashSpell extends AbstractSpell {
 				Mth.lerp(.75f, entity.getDeltaMovement().y, vec.y),
 				Mth.lerp(.75f, entity.getDeltaMovement().z, vec.z)
 		));
+		if (entity instanceof Player p) p.setIgnoreFallDamageFromCurrentImpulse(true);
 
 		PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new DashParticlesPacket(entity.position(), vec));
 		entity.invulnerableTime = 20;

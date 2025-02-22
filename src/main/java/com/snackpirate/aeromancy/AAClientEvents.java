@@ -2,6 +2,7 @@ package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.spells.AASpells;
+import com.snackpirate.aeromancy.spells.tornado.TornadoRenderer;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftVisualRenderer;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeRenderer;
@@ -28,6 +29,7 @@ public class AAClientEvents {
 		event.registerEntityRenderer(AASpells.Entities.UPDRAFT_VISUAL_ENTITY.get(), UpdraftVisualRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.SUMMONED_BREEZE.get(), BreezeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.WIND_BLADE_PROJECTILE.get(), WindBladeRenderer::new);
+		event.registerEntityRenderer(AASpells.Entities.TORNADO.get(), TornadoRenderer::new);
 		CuriosRendererRegistry.register(AAItems.UPDRAFT_TOME.get(), SpellBookCurioRenderer::new);
 	}
 
