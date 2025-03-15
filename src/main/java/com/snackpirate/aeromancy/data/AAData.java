@@ -1,6 +1,7 @@
 package com.snackpirate.aeromancy.data;
 
 import com.snackpirate.aeromancy.Aeromancy;
+import io.redspace.ironsspellbooks.registries.UpgradeOrbTypeRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -21,7 +22,8 @@ import java.util.concurrent.CompletableFuture;
 public class AAData extends DatapackBuiltinEntriesProvider {
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-			.add(Registries.DAMAGE_TYPE, AADamageTypes::bootstrap);
+			.add(Registries.DAMAGE_TYPE, AADamageTypes::bootstrap)
+			.add(UpgradeOrbTypeRegistry.UPGRADE_ORB_REGISTRY_KEY, AAUpgradeOrbs::bootstrap);
 
 	public AAData(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
 		super(output, provider, BUILDER, Set.of("minecraft", Aeromancy.MOD_ID));

@@ -60,7 +60,7 @@ public class TornadoSpell extends AbstractSpell {
 
 
 	private float getSize(int spellLevel, LivingEntity entity) {
-		return 4 + spellLevel;
+		return 4 + (2*spellLevel);
 	}
 
 	@Override

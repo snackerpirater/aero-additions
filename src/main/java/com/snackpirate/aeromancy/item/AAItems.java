@@ -1,6 +1,7 @@
 package com.snackpirate.aeromancy.item;
 
 import com.snackpirate.aeromancy.Aeromancy;
+import com.snackpirate.aeromancy.data.AAUpgradeOrbs;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
@@ -9,7 +10,9 @@ import io.redspace.ironsspellbooks.item.UniqueSpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import io.redspace.ironsspellbooks.registries.UpgradeOrbTypeRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -48,7 +51,7 @@ public class AAItems {
 	);
 	public static final DeferredHolder<Item, Item> WIND_RUNE = ITEMS.register("wind_rune", () -> new Item(new Item.Properties().stacksTo(64)));
 
-	public static final DeferredHolder<Item, Item> WIND_UPGRADE_ORB = ITEMS.register("wind_upgrade_orb", () -> new UpgradeOrbItem(AASpells.UpgradeTypes.WIND_SPELL_POWER, new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+	public static final DeferredHolder<Item, Item> WIND_UPGRADE_ORB = ITEMS.register("wind_upgrade_orb", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, AAUpgradeOrbs.WIND_SPELL_POWER)));
 
 	public static final DeferredHolder<Item, Item> WINDMAKER_HEADPIECE = ITEMS.register("windmaker_headpiece", () -> new WindmakerRobeItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredHolder<Item, Item> WINDMAKER_ROBES = ITEMS.register("windmaker_robes", () -> new WindmakerRobeItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
