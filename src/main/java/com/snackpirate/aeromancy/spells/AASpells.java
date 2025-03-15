@@ -79,7 +79,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
-	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
+//	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
