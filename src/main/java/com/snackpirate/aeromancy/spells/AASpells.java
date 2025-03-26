@@ -1,7 +1,6 @@
 package com.snackpirate.aeromancy.spells;
 
 import com.snackpirate.aeromancy.data.AADamageTypes;
-import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.AASounds;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.data.AAItemTags;
@@ -12,10 +11,8 @@ import com.snackpirate.aeromancy.spells.asphyxiate.BreathlessEffect;
 import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
-import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
-import com.snackpirate.aeromancy.spells.tornado.TornadoSpell;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
@@ -24,17 +21,12 @@ import com.snackpirate.aeromancy.spells.wind_charge.MagicWindCharge;
 import com.snackpirate.aeromancy.spells.wind_charge.WindChargeSpell;
 import com.snackpirate.aeromancy.spells.wind_shield.WindShieldEffect;
 import com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.effect.SummonTimer;
-import io.redspace.ironsspellbooks.entity.spells.black_hole.BlackHole;
-import io.redspace.ironsspellbooks.entity.spells.firebolt.FireboltProjectile;
-import io.redspace.ironsspellbooks.item.armor.UpgradeType;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataSerializer;
@@ -45,14 +37,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.animal.FrogVariant;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.CherryLeavesBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class AASpells {
@@ -92,7 +82,7 @@ public class AASpells {
 						.clientTrackingRange(64)
 						.build(Aeromancy.id("magic_wind_charge").toString()));
 
-		public static final DeferredHolder<EntityType<?>, EntityType<UpdraftEntity>> UPDRAFT_VISUAL_ENTITY = ENTITIES.register("updraft_visual", () -> EntityType.Builder.<UpdraftEntity>of(UpdraftEntity::new, MobCategory.MISC)
+		public static final DeferredHolder<EntityType<?>, EntityType<UpdraftEntity>> UPDRAFT_VISUAL_ENTITY = ENTITIES.register("updraft_visual", () -> EntityType.Builder.of(UpdraftEntity::new, MobCategory.MISC)
 				.sized(0.5f,0.5f)
 				.clientTrackingRange(64)
 				.build(Aeromancy.id("updraft_visual").toString()));
@@ -171,52 +161,4 @@ public class AASpells {
 		public static final DeferredHolder<MobEffect, SummonTimer> BREEZE_TIMER = MOB_EFFECTS.register("breeze_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
 	}
 
-	public enum UpgradeTypes implements UpgradeType {
-		WIND_SPELL_POWER("wind_power", AAItems.WIND_UPGRADE_ORB, Attributes.WIND_SPELL_POWER, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, .05f);
-
-
-		final Holder<Attribute> attribute;
-		final AttributeModifier.Operation operation;
-		final float amountPerUpgrade;
-		final ResourceLocation id;
-		final Optional<Holder<Item>> containerItem;
-
-		UpgradeTypes(String key, Holder<Item> containerItem, Holder<Attribute> attribute, AttributeModifier.Operation operation, float amountPerUpgrade) {
-			this(key, Optional.of(containerItem), attribute, operation, amountPerUpgrade);
-		}
-
-		UpgradeTypes(String key, Optional<Holder<Item>> containerItem, Holder<Attribute> attribute, AttributeModifier.Operation operation, float amountPerUpgrade) {
-			this.id = Aeromancy.id(key);
-			this.attribute = attribute;
-			this.operation = operation;
-			this.amountPerUpgrade = amountPerUpgrade;
-			this.containerItem = containerItem;
-			UpgradeType.registerUpgrade(this);
-		}
-
-		@Override
-		public Holder<Attribute> getAttribute() {
-			return attribute;
-		}
-
-		@Override
-		public AttributeModifier.Operation getOperation() {
-			return operation;
-		}
-
-		@Override
-		public float getAmountPerUpgrade() {
-			return amountPerUpgrade;
-		}
-
-		@Override
-		public ResourceLocation getId() {
-			return id;
-		}
-
-		@Override
-		public Optional<Holder<Item>> getContainerItem() {
-			return containerItem;
-		}
-	}
 }

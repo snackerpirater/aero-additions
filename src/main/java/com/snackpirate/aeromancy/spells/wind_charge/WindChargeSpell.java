@@ -6,6 +6,9 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.item.Scroll;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +27,7 @@ public class WindChargeSpell extends AbstractSpell {
 		this.castTime = 0;
 		this.baseManaCost = 20;
 	}
+
 	@Override
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
 		return List.of(
