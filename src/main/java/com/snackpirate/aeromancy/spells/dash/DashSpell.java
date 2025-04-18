@@ -5,6 +5,7 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.capabilities.magic.ImpulseCastData;
 import io.redspace.ironsspellbooks.network.particles.TeleportParticlesPacket;
 import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
@@ -99,5 +100,10 @@ public class DashSpell extends AbstractSpell {
 	@Override
 	public CastType getCastType() {
 		return CastType.INSTANT;
+	}
+
+	@Override
+	public AnimationHolder getCastFinishAnimation() {
+		return SpellAnimations.SELF_CAST_ANIMATION;
 	}
 }

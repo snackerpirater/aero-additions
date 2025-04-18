@@ -6,6 +6,7 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.minecraft.resources.ResourceLocation;
@@ -69,6 +70,11 @@ public class AsphyxiateSpell extends AbstractSpell {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public AnimationHolder getCastStartAnimation() {
+		return SpellAnimations.ANIMATION_CONTINUOUS_OVERHEAD;
 	}
 
 	public AsphyxiateSpell() {

@@ -5,6 +5,7 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.capabilities.magic.ImpulseCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
@@ -100,5 +101,10 @@ public class AirstepSpell extends AbstractSpell {
 		MagicManager.spawnParticles(level, ParticleTypes.SPIT, entity.getX(), entity.getY(), entity.getZ(), 10, 0.2, 0, 0.2, 0.3, true);
 		entity.hasImpulse = true;
 		super.onCast(level, spellLevel, entity, castSource, playerMagicData);
+	}
+
+	@Override
+	public AnimationHolder getCastFinishAnimation() {
+		return SpellAnimations.TOUCH_GROUND_ANIMATION;
 	}
 }

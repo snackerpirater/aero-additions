@@ -5,6 +5,7 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -59,6 +60,11 @@ public class WindBladeSpell extends AbstractSpell {
 	@Override
 	public CastType getCastType() {
 		return CastType.INSTANT;
+	}
+
+	@Override
+	public AnimationHolder getCastFinishAnimation() {
+		return SpellAnimations.SLASH_ANIMATION;
 	}
 
 	private float getDamage(int spellLevel, LivingEntity entity) {

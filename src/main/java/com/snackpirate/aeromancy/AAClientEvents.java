@@ -23,14 +23,17 @@ import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class AAClientEvents {
+
 	@SubscribeEvent
 	public static void rendererRegister(EntityRenderersEvent.RegisterRenderers event) {
+		CuriosRendererRegistry.register(AAItems.UPDRAFT_TOME.get(), SpellBookCurioRenderer::new);
+
 		event.registerEntityRenderer(AASpells.Entities.MAGIC_WIND_CHARGE.get(), MagicWindChargeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.UPDRAFT_VISUAL_ENTITY.get(), UpdraftVisualRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.SUMMONED_BREEZE.get(), BreezeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.WIND_BLADE_PROJECTILE.get(), WindBladeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.TORNADO.get(), TornadoRenderer::new);
-		CuriosRendererRegistry.register(AAItems.UPDRAFT_TOME.get(), SpellBookCurioRenderer::new);
+
 	}
 
 	@SubscribeEvent

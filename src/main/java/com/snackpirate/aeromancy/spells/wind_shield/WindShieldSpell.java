@@ -5,6 +5,7 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -70,5 +71,10 @@ public class WindShieldSpell extends AbstractSpell {
 		//1: 15
 		//2: 20
 		return 10 + (5*spellLevel) + (int)Math.sqrt(10*this.getSpellPower(spellLevel, entity));
+	}
+
+	@Override
+	public AnimationHolder getCastFinishAnimation() {
+		return SpellAnimations.CAST_T_POSE;
 	}
 }

@@ -22,4 +22,6 @@ public class AASounds {
 
 	public static DeferredHolder<SoundEvent, SoundEvent> WIND_CAST = registerSoundEvent("cast.generic.wind");
 	public static DeferredHolder<SoundEvent, SoundEvent> AIRBLAST_CAST = registerSoundEvent("cast.generic.airblast");
+	public static DeferredHolder<SoundEvent, SoundEvent> THUNDERCLAP_CAST = registerSoundEvent("cast.generic.thunderclap");
+	public static DeferredHolder<SoundEvent, SoundEvent> WIND_CAST_REVERSED = registerSoundEvent("cast.generic.wind_reversed");
 }

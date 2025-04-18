@@ -16,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,12 +30,12 @@ public class AAItemTags extends ItemTagsProvider {
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(WIND_FOCUS).add(Items.BREEZE_ROD);
 		tag(ModTags.SCHOOL_FOCUS).add(Items.BREEZE_ROD);
+		tag(ModTags.INSCRIBED_RUNES).add(AAItems.WIND_RUNE.get());
 		tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "spellbook"))).add(AAItems.UPDRAFT_TOME.get());
 		tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "staff"))).add(AAItems.AIR_STAFF.get());
 		tag(Tags.Items.ENCHANTABLES).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SWORD_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
 		tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(AAItems.AIR_STAFF.get());
-
 		tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_HEADPIECE.get());
 		tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_ROBES.get());
 		tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(AAItems.WINDMAKER_SKIRT.get());

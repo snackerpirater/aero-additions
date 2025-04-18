@@ -12,7 +12,9 @@ import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
+import com.snackpirate.aeromancy.spells.thunderclap.ThunderclapSpell;
 import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
+import com.snackpirate.aeromancy.spells.tornado.TornadoSpell;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
@@ -69,7 +71,8 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
-//	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
+	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
+//	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {

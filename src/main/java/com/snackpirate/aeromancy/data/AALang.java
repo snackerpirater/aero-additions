@@ -61,7 +61,7 @@ public class AALang extends LanguageProvider {
 		addSpell(AASpells.WIND_BLADE.get(), "Wind Blade", "Conjure a swiftly-moving blade of pure, swirling wind, dealing low damage but high knockback upon impact.");
 		addSpell(AASpells.FLUSH.get(), "Flush", "Expel a large quantity of water around you.");
 		addSpell(AASpells.DASH.get(), "Dash", "Quickly dash forward.");
-
+//		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "Send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

@@ -4,10 +4,20 @@
       "aero_additions:generic/wind_cast"
     ]
   },
+  "cast.generic.wind_reversed": {
+    "sounds": [
+      "aero_additions:generic/wind_cast_reversed"
+    ]
+  },
 
   "cast.generic.airblast": {
     "sounds": [
       "aero_additions:generic/airblast_woosh"
+    ]
+  },
+  "cast.generic.thunderclap": {
+    "sounds": [
+      "aero_additions:generic/thunderclap_cast"
     ]
   },
 

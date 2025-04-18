@@ -25,6 +25,7 @@ public class AAItems {
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
 	}
+
 	public static final DeferredHolder<Item,Item> AIR_STAFF = ITEMS.register("air_staff", () -> new StaffItem(new Item.Properties()
 			.stacksTo(1)
 			.rarity(Rarity.RARE)
@@ -36,6 +37,7 @@ public class AAItems {
 					.add(Attributes.GRAVITY, new AttributeModifier(Aeromancy.id("gravity"), -0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
 					.build())
 			));
+
 	public static final DeferredHolder<Item, Item> UPDRAFT_TOME = ITEMS.register("updraft_tome", () -> new UniqueSpellBook(
 			new SpellDataRegistryHolder[]{
 					new SpellDataRegistryHolder(AASpells.UPDRAFT, 5)
@@ -57,10 +59,10 @@ public class AAItems {
 			Tiers.DIAMOND,
 			ItemPropertiesHelper.equipment(1).rarity(Rarity.EPIC).durability(Tiers.DIAMOND.getUses()).attributes(
 					ItemAttributeModifiers.builder()
-							.add(AASpells.Attributes.WIND_SPELL_POWER, new AttributeModifier(Aeromancy.id("wind_sword_power"), .1f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.HAND)
-							.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
-							.add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
-							.add(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(Aeromancy.id("wind_sword_kb"), 1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND).build()),
+							.add(AASpells.Attributes.WIND_SPELL_POWER, new AttributeModifier(Aeromancy.id("wind_sword_power"), .1f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+							.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+							.add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+							.add(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(Aeromancy.id("wind_sword_kb"), 1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()),
 			new SpellDataRegistryHolder[]{new SpellDataRegistryHolder(AASpells.WIND_BLADE, 10)}
 			));
 }
