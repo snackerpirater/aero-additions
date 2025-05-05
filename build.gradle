@@ -44,6 +44,9 @@ repositories {
         }
     }
 
+    repositories { //ExpandAbility, used for Jetstream and Feather Floating
+        maven { url = "https://maven.florens.be/releases" }
+    }
 }
 
 base {
@@ -158,6 +161,9 @@ dependencies {
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
     implementation "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
     implementation "curse.maven:adorned-1036809:5546365"
+
+
+    implementation "be.florens:expandability-neoforge:12.0.0"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

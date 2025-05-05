@@ -4,7 +4,6 @@ import com.snackpirate.aeromancy.item.AAItems;
 import com.snackpirate.aeromancy.Aeromancy;
 import io.redspace.ironsspellbooks.util.ModTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -15,8 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
 import java.util.concurrent.CompletableFuture;
 

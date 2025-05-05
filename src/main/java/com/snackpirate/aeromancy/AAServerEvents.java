@@ -1,5 +1,7 @@
 package com.snackpirate.aeromancy;
 
+import be.florens.expandability.api.EventResult;
+import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
@@ -40,13 +42,6 @@ public class AAServerEvents {
 	public static void onAttributeCreate(EntityAttributeCreationEvent event) {
 		event.put(AASpells.Entities.SUMMONED_BREEZE.get(), SummonedBreeze.createAttributes().build());
 	}
-	@SubscribeEvent
-	public static void adjustSpellbookComp(ItemAttributeModifierEvent event) {
-		if (event.getItemStack().is(ItemRegistry.DRAGONSKIN_SPELL_BOOK)) {
-			event.addModifier(AttributeRegistry.ENDER_SPELL_POWER, new AttributeModifier(ResourceLocation.parse("irons_spellbooks:test"), 100f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.valueOf("spellbook"));
-		}
-	}
-
 
 		@EventBusSubscriber(modid=Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 	public static class Game {
@@ -67,6 +62,10 @@ public class AAServerEvents {
 				}
 			}
 
+		}
+		@SubscribeEvent
+		public static void activateFlight(PlayerSwimEvent event) {
+			if (event.getEntity().hasEffect(AASpells.MobEffects.FLIGHT)) event.setResult(EventResult.SUCCESS);
 		}
 	}
 }

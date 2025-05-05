@@ -53,20 +53,24 @@ public class AALang extends LanguageProvider {
 		add("spell.aero_additions.airblast.deflection_power", "%s%% Reflection Power");
 		add("spell.aero_additions.airblast.degree_width", "%s° Arc");
 		addItem(AAItems.WIND_SWORD, "Tempest Blade");
+		addSpell(AASpells.WIND_BLADE.get(), "Wind Blade", "Conjure a swiftly-moving blade of pure, swirling wind, dealing low damage but high knockback upon impact.");
 		addEntityType(AASpells.Entities.WIND_BLADE_PROJECTILE, "Wind Blade");
 		add("death.attack.aero_additions.wind_blade", "%1$s was struck down by %2$s's Wind Blade");
 		addEntityType(AASpells.Entities.MAGIC_WIND_CHARGE, "Magic Wind Charge");
 		addEntityType(AASpells.Entities.UPDRAFT_VISUAL_ENTITY, "Gust");
 		addEntityType(AASpells.Entities.SUMMONED_BREEZE, "Summoned Breeze");
-		addSpell(AASpells.WIND_BLADE.get(), "Wind Blade", "Conjure a swiftly-moving blade of pure, swirling wind, dealing low damage but high knockback upon impact.");
 		addSpell(AASpells.FLUSH.get(), "Flush", "Expel a large quantity of water around you.");
 		addSpell(AASpells.DASH.get(), "Dash", "Quickly dash forward.");
-//		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "Send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
+		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "With a booming clap, send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
+		addEntityType(AASpells.Entities.TORNADO, "Tornado");
+		addSpell(AASpells.TORNADO.get(), "Tornado", "Conjure forth a powerful tornado, dragging enemies into its vortex and launching them into the air.");
+
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath() + ".guide", guide);
 	}
+
 	public void addSchool(SchoolType school, String name) {
 		this.add("school.aero_additions." + school.getId().getPath(), name);
 	}

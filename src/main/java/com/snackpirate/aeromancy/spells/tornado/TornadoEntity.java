@@ -171,7 +171,7 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 		int update = Math.max((int) (getSize() / 2), 2);
 		//prevent lag from giagantic 'nados
 		if (tickCount % update == 0) {
-//			Aeromancy.LOGGER.info("update tracknig");
+//			Aeromancy.LOGGER.info("update trackin");
 			updateTrackingEntities();
 		}
 		var bb = this.getBoundingBox();
@@ -195,8 +195,9 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 				if (distanceToColumn < 2) {
 					checkForApplicableEffects(entity);
 				}
-				if (hitTick && entity instanceof LivingEntity living) applyDamage(living);
+				if (hitTick && entity instanceof LivingEntity living && distanceToColumn < 2) applyDamage(living);
 				float f = 1 - distanceToColumn / radius;
+
 				float heightInColumn = Math.max((float) (entity.getY() - bb.getMinPosition().y),1)/3;
 				float scale = f * f * f * f * .25f;
 				Vec3 inwardsSuction = centerFromY.subtract(entity.position()).normalize().scale(scale*heightInColumn);
@@ -225,6 +226,7 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 //				this.playSound(SoundRegistry.BLACK_HOLE_LOOP.get(), getRadius() / 3f, 1);
 
 			}
+
 		}
 	}
 	public void applyDamage(LivingEntity e) {

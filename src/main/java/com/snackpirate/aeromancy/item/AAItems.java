@@ -6,16 +6,21 @@ import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.item.UniqueSpellBook;
+import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -65,4 +70,11 @@ public class AAItems {
 							.add(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(Aeromancy.id("wind_sword_kb"), 1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()),
 			new SpellDataRegistryHolder[]{new SpellDataRegistryHolder(AASpells.WIND_BLADE, 10)}
 			));
+//
+//	public static final DeferredHolder<Item, Item> TEST_PICKAXE = ITEMS.register("test_pickaxe", () -> new TestImbuableTool(
+//			ItemPropertiesHelper
+//					.equipment(1)
+//					.rarity(Rarity.EPIC)
+//					.durability(Tiers.DIAMOND.getUses())
+//					.component(DataComponents.TOOL, Tiers.DIAMOND.createToolProperties(BlockTags.MINEABLE_WITH_PICKAXE))));
 }

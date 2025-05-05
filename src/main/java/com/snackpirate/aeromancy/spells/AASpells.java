@@ -10,6 +10,7 @@ import com.snackpirate.aeromancy.spells.asphyxiate.AsphyxiateSpell;
 import com.snackpirate.aeromancy.spells.asphyxiate.BreathlessEffect;
 import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
+import com.snackpirate.aeromancy.spells.feather_fall.FlightEffect;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.thunderclap.ThunderclapSpell;
@@ -39,6 +40,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.block.CherryLeavesBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -72,7 +74,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
 	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
-//	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
+	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
@@ -162,6 +164,10 @@ public class AASpells {
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
 		public static final DeferredHolder<MobEffect, SummonTimer> BREEZE_TIMER = MOB_EFFECTS.register("breeze_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
+
+		public static final DeferredHolder<MobEffect, MobEffect> FLIGHT = MOB_EFFECTS.register("flight", () -> new FlightEffect(MobEffectCategory.BENEFICIAL, 0xd3ebea)
+				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.WATER_MOVEMENT_EFFICIENCY, Aeromancy.id("effect.flight"), 1f, AttributeModifier.Operation.ADD_VALUE)
+				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED, Aeromancy.id("effect.flight"), 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 	}
 
 }

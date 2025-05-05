@@ -55,7 +55,7 @@ public class FeatherFallSpell extends AbstractSpell {
 	public FeatherFallSpell() {
 		this.manaCostPerLevel = 15;
 		this.baseSpellPower = 30;
-		this.spellPowerPerLevel = 5;
+		this.spellPowerPerLevel = 10;
 		this.castTime = 20;
 		this.baseManaCost = 50;
 	}
@@ -85,7 +85,7 @@ public class FeatherFallSpell extends AbstractSpell {
 				AtomicInteger targets = new AtomicInteger(0);
 				targetEntity.level().getEntitiesOfClass(LivingEntity.class, targetEntity.getBoundingBox().inflate(radius)).forEach((victim) -> {
 					if (targets.get() < MAX_TARGETS && victim.distanceToSqr(targetEntity) < radius * radius && Utils.shouldHealEntity(entity, victim)) {
-						victim.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, getDuration(spellLevel, entity), 0));
+						victim.addEffect(new MobEffectInstance(AASpells.MobEffects.FLIGHT, getDuration(spellLevel, entity), 0));
 						targets.incrementAndGet();
 					}
 				});
