@@ -91,14 +91,7 @@ public class BreezeBrainGoals {
 		@Override
 		public void start() {
 			this.mob.setTarget(this.ownerLastHurt);
-			Aeromancy.LOGGER.debug("GenericOwnerHurtTargetGoal.start");
-			Aeromancy.LOGGER.debug("Brain before: {}",this.mob.getBrain().getMemories().keySet().stream()
-					.map(key -> key + "=" + this.mob.getBrain().getMemories().get(key))
-					.collect(Collectors.joining(", ", "{", "}")));
 			this.mob.getBrain().setMemoryWithExpiry(MemoryModuleType.NEAREST_ATTACKABLE, this.ownerLastHurt, 200L);
-			Aeromancy.LOGGER.debug("Brain After: {}",this.mob.getBrain().getMemories().keySet().stream()
-					.map(key -> key + "=" + this.mob.getBrain().getMemories().get(key))
-					.collect(Collectors.joining(", ", "{", "}")));
 			LivingEntity owner = this.owner.get();
 			if (owner != null) {
 				this.timestamp = owner.getLastHurtMobTimestamp();

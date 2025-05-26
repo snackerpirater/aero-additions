@@ -24,14 +24,14 @@ public class FlightEffect extends MagicMobEffect {
 	public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
 		if (pLivingEntity.tickCount % 20 == 0) {
 			int weightScore = calculateWeightScore(pLivingEntity);
-			Aeromancy.LOGGER.info("flight weight {}", weightScore);
+//			Aeromancy.LOGGER.info("flight weight {}", weightScore);
 
 			AttributeInstance instance = pLivingEntity.getAttributes().getInstance(Attributes.GRAVITY);
 			if (instance != null) {
 				instance.removeModifier(Aeromancy.id("flight.gravity"));
 				if (weightScore != 0)
 					instance.addOrUpdateTransientModifier(new AttributeModifier(Aeromancy.id("flight.gravity"), (weightScore / 4f) - 0.08, AttributeModifier.Operation.ADD_VALUE));
-				Aeromancy.LOGGER.info("gravity attrib {}", (weightScore / 4f) - 0.16);
+//				Aeromancy.LOGGER.info("gravity attrib {}", (weightScore / 4f) - 0.16);
 			}
 		}
 		return super.applyEffectTick(pLivingEntity, pAmplifier);
@@ -53,6 +53,7 @@ public class FlightEffect extends MagicMobEffect {
 		for (EquipmentSlot slot: EquipmentSlot.values()) {
 			int itemScore;
 			ItemStack stackInSlot = living.getItemBySlot(slot);
+//			Aeromancy.LOGGER.info("calculating weight of stack {}", stackInSlot.toString());
 			if (stackInSlot.is(AAItemTags.FLIGHT_LIGHT) || !living.hasItemInSlot(slot)) itemScore = 0;
 			else if (stackInSlot.is(AAItemTags.FLIGHT_HEAVY)) itemScore = 4;
 			else if (stackInSlot.is(ItemTags.ANVIL)) itemScore = 10;

@@ -62,7 +62,7 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
 	@Override
 	public void tick() {
 		if (this.getTargetFromBrain() != null) {
-			Aeromancy.LOGGER.info("breeze brain target: {}", this.getTargetFromBrain().toString());
+//			Aeromancy.LOGGER.info("breeze brain target: {}", this.getTargetFromBrain().toString());
 		}
 		super.tick();
 	}

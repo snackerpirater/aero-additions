@@ -61,9 +61,9 @@ public class AALang extends LanguageProvider {
 		addEntityType(AASpells.Entities.SUMMONED_BREEZE, "Summoned Breeze");
 		addSpell(AASpells.FLUSH.get(), "Flush", "Expel a large quantity of water around you.");
 		addSpell(AASpells.DASH.get(), "Dash", "Quickly dash forward.");
-		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "With a booming clap, send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
+//		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "With a booming clap, send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
 		addEntityType(AASpells.Entities.TORNADO, "Tornado");
-		addSpell(AASpells.TORNADO.get(), "Tornado", "Conjure forth a powerful tornado, dragging enemies into its vortex and launching them into the air.");
+//		addSpell(AASpells.TORNADO.get(), "Tornado", "Conjure forth a powerful tornado, dragging enemies into its vortex and launching them into the air.");
 
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
