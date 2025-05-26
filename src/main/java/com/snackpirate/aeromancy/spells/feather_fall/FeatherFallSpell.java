@@ -18,8 +18,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -29,11 +31,12 @@ public class FeatherFallSpell extends AbstractSpell {
 	private static final int MAX_TARGETS = 5;
 
 	private final DefaultConfig defaultConfig = new DefaultConfig()
-			.setMinRarity(SpellRarity.UNCOMMON)
+			.setMinRarity(SpellRarity.RARE)
 			.setSchoolResource(AASpells.Schools.WIND_RESOURCE)
-			.setMaxLevel(6)
-			.setCooldownSeconds(45)
+			.setMaxLevel(5)
+			.setCooldownSeconds(90)
 			.build();
+
 	@Override
 	public ResourceLocation getSpellResource() {
 		return Aeromancy.id("feather_fall");
@@ -53,10 +56,10 @@ public class FeatherFallSpell extends AbstractSpell {
 	}
 
 	public FeatherFallSpell() {
-		this.manaCostPerLevel = 15;
+		this.manaCostPerLevel = 20;
 		this.baseSpellPower = 30;
-		this.spellPowerPerLevel = 10;
-		this.castTime = 20;
+		this.spellPowerPerLevel = 30;
+		this.castTime = 50;
 		this.baseManaCost = 50;
 	}
 
@@ -102,4 +105,5 @@ public class FeatherFallSpell extends AbstractSpell {
 	public int getDuration(int spellLevel, LivingEntity caster) {
 		return (int) (getSpellPower(spellLevel, caster) * 20);
 	}
+
 }

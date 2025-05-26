@@ -146,6 +146,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
+    runtimeOnly "curse.maven:attributefix-280510:5824104"
+    runtimeOnly "curse.maven:bookshelf-228525:6503278"
+    runtimeOnly "curse.maven:prickle-1023259:5836410"
 
     compileOnly "io.redspace:irons_spellbooks:${irons_spells_version}:api"
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"

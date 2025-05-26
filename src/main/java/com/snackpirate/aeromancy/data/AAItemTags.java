@@ -19,6 +19,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class AAItemTags extends ItemTagsProvider {
 	public static final TagKey<Item> WIND_FOCUS = TagKey.create(Registries.ITEM, Aeromancy.id("wind_focus"));
+	public static final TagKey<Item> FLIGHT_LIGHT = TagKey.create(Registries.ITEM, Aeromancy.id("flight_light"));
+	public static final TagKey<Item> FLIGHT_HEAVY = TagKey.create(Registries.ITEM, Aeromancy.id("flight_heavy"));
 	public AAItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
 		super(output, lookupProvider, blockTags);
 	}
@@ -45,5 +47,34 @@ public class AAItemTags extends ItemTagsProvider {
 
 		tag(ItemTags.SWORDS).add(AAItems.WIND_SWORD.get());
 		tag(Tags.Items.MELEE_WEAPON_TOOLS).add(AAItems.WIND_SWORD.get());
+		
+		tag(FLIGHT_LIGHT).add(
+				AAItems.WINDMAKER_HEADPIECE.get(),
+				AAItems.WINDMAKER_ROBES.get(),
+				AAItems.WINDMAKER_SKIRT.get(),
+				AAItems.WINDMAKER_BOOTS.get(),
+				AAItems.AIR_STAFF.get(),
+				AAItems.WIND_SWORD.get()
+		);
+		tag(FLIGHT_HEAVY).add(
+				Items.IRON_HELMET,
+				Items.IRON_CHESTPLATE,
+				Items.IRON_LEGGINGS,
+				Items.IRON_BOOTS,
+
+				Items.GOLDEN_HELMET,
+				Items.GOLDEN_CHESTPLATE,
+				Items.GOLDEN_LEGGINGS,
+				Items.GOLDEN_BOOTS,
+
+				Items.DIAMOND_HELMET,
+				Items.DIAMOND_CHESTPLATE,
+				Items.DIAMOND_LEGGINGS,
+				Items.DIAMOND_BOOTS,
+
+				Items.NETHERITE_HELMET,
+				Items.NETHERITE_CHESTPLATE,
+				Items.NETHERITE_LEGGINGS,
+				Items.NETHERITE_BOOTS);
 	}
 }

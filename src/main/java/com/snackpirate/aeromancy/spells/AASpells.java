@@ -40,8 +40,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.block.CherryLeavesBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -73,8 +71,8 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
-	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
-	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
+//	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
+//	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 
 	public static class Entities {
