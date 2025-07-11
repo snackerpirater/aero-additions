@@ -1,6 +1,7 @@
 package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.item.AAItems;
+import com.snackpirate.aeromancy.network.AADataAttachments;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -39,6 +40,7 @@ public class Aeromancy
         AASpells.register(modEventBus);
         AAItems.register(modEventBus);
         AACreativeTab.register(modEventBus);
+        AADataAttachments.register(modEventBus);
 
     }
     private void commonSetup(final FMLCommonSetupEvent event)

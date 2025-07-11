@@ -44,7 +44,6 @@ public class TornadoRenderer extends DynamicGeoEntityRenderer<TornadoEntity> {
 			case ENDER -> 0xFF00FF;
 			case NATURE -> 0x00FF00;
 			case LIGHTNING -> 0x00FFFF;
-			case ICE -> 0x50FFFF;
 		};
 		return new Color(0xD0000000 + colorValue);
 	}

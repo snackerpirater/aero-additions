@@ -151,6 +151,7 @@ dependencies {
     runtimeOnly "curse.maven:prickle-1023259:5836410"
 
     compileOnly "io.redspace:irons_spellbooks:${irons_spells_version}:api"
+
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
 
     runtimeOnly "io.redspace:irons_jewelry:1.0.2"

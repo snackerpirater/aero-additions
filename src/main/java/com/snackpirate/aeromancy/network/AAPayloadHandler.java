@@ -15,5 +15,6 @@ public class AAPayloadHandler {
 		final PayloadRegistrar payloadRegistrar = event.registrar(Aeromancy.MOD_ID).versioned("1.0.0").optional();
 
 		payloadRegistrar.playToClient(DashParticlesPacket.TYPE, DashParticlesPacket.STREAM_CODEC, DashParticlesPacket::handle);
+		payloadRegistrar.playToClient(AASyncPlayerDataPacket.TYPE, AASyncPlayerDataPacket.STREAM_CODEC, AASyncPlayerDataPacket::handle);
 	}
 }

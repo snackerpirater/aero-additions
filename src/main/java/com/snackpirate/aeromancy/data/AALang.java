@@ -64,7 +64,9 @@ public class AALang extends LanguageProvider {
 //		addSpell(AASpells.THUNDERCLAP.get(), "Thunderclap", "With a booming clap, send forward an unstoppable shockwave of pressurized air that stuns enemies in its path.");
 		addEntityType(AASpells.Entities.TORNADO, "Tornado");
 //		addSpell(AASpells.TORNADO.get(), "Tornado", "Conjure forth a powerful tornado, dragging enemies into its vortex and launching them into the air.");
-
+		addEffect(AASpells.MobEffects.FLIGHT, "Feather Flight");
+		addSpell(AASpells.TELELINK.get(), "Telelink", "Cast to select multiple targets to link them and yourself together with a binding force that synchronizes your teleports.");
+		addEffect(AASpells.MobEffects.TELELINKED, "Telelinked");
 	}
 	public void addSpell(AbstractSpell spell, String name, String guide) {
 		this.add("spell.aero_additions." + spell.getSpellResource().getPath(), name);

@@ -46,11 +46,13 @@ public class BreezeBrainGoals {
 				int i = owner.getLastHurtByMobTimestamp();
 				return i != this.timestamp && this.canAttack(this.ownerLastHurtBy, TargetingConditions.DEFAULT) && !(this.ownerLastHurtBy instanceof IMagicSummon summon && summon.getSummoner() == owner);
 			}
+
 		}
 		@Override
 		public void start() {
 			this.mob.setTarget(this.ownerLastHurtBy);
 			this.mob.getBrain().setMemoryWithExpiry(MemoryModuleType.ATTACK_TARGET, this.ownerLastHurtBy, 200L);
+			this.mob.getBrain().setMemoryWithExpiry(MemoryModuleType.HURT_BY_ENTITY, this.ownerLastHurtBy, 200L);
 			LivingEntity owner = this.owner.get();
 			if (owner != null) {
 				this.timestamp = owner.getLastHurtByMobTimestamp();
@@ -78,6 +80,7 @@ public class BreezeBrainGoals {
 		public boolean canUse() {
 			LivingEntity owner = this.owner.get();
 			if (owner == null) {
+//				Aeromancy.LOGGER.info("can use: {}", false);
 				return false;
 			} else {
 				//mob.getLastHurtByMobTimestamp() == mob.tickCount - 1
@@ -85,6 +88,7 @@ public class BreezeBrainGoals {
 				int i = owner.getLastHurtMobTimestamp();
 
 
+//				Aeromancy.LOGGER.info("can use 2: {}", i != this.timestamp && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT) && !(this.ownerLastHurt instanceof IMagicSummon summon && summon.getSummoner() == owner));
 				return i != this.timestamp && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT) && !(this.ownerLastHurt instanceof IMagicSummon summon && summon.getSummoner() == owner);
 			}
 		}
@@ -92,6 +96,7 @@ public class BreezeBrainGoals {
 		public void start() {
 			this.mob.setTarget(this.ownerLastHurt);
 			this.mob.getBrain().setMemoryWithExpiry(MemoryModuleType.NEAREST_ATTACKABLE, this.ownerLastHurt, 200L);
+			Aeromancy.LOGGER.info("hurt target {}", this.entity.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE));
 			LivingEntity owner = this.owner.get();
 			if (owner != null) {
 				this.timestamp = owner.getLastHurtMobTimestamp();

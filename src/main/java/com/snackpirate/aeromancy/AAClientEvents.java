@@ -1,10 +1,10 @@
 package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.item.AAItems;
+import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.tornado.TornadoRenderer;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftVisualRenderer;
-import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeRenderer;
 import com.snackpirate.aeromancy.spells.wind_charge.MagicWindChargeRenderer;
 import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
@@ -34,6 +34,7 @@ public class AAClientEvents {
 		event.registerEntityRenderer(AASpells.Entities.WIND_BLADE_PROJECTILE.get(), WindBladeRenderer::new);
 		event.registerEntityRenderer(AASpells.Entities.TORNADO.get(), TornadoRenderer::new);
 
+
 	}
 
 	@SubscribeEvent
@@ -53,7 +54,7 @@ public class AAClientEvents {
 	private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, PlayerSkin.Model skinName) {
 		EntityRenderer<? extends Player> render = event.getSkin(skinName);
 		if (render instanceof LivingEntityRenderer livingRenderer) {
-			livingRenderer.addLayer(new WindySwirlRenderer.Vanilla(livingRenderer, Aeromancy.id("textures/entity/wind_shield_layer.png"), 256L));
+			livingRenderer.addLayer(new WindySwirlRenderer.Vanilla(livingRenderer, Aeromancy.id("textures/entity/wind_shield_layer.png"), AeromancySpellData.WIND_SHIELD));
 		}
 	}
 }

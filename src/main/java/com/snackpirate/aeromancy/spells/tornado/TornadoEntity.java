@@ -236,15 +236,7 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 				DamageSources.applyDamage(e, 2, SpellRegistry.FIRE_BREATH_SPELL.get().getDamageSource(this, getOwner()));
 			}
 			case ENDER -> {
-				if (DamageSources.applyDamage(e, 2, SpellRegistry.DRAGON_BREATH_SPELL.get().getDamageSource(this, getOwner()))) {
-					if (random.nextFloat() < .3f) {
-						DragonBreathPool pool = new DragonBreathPool(level());
-						pool.setOwner(getOwner());
-						pool.setDamage(1);
-						pool.moveTo(e.position());
-						this.level().addFreshEntity(pool);
-					}
-				}
+				DamageSources.applyDamage(e, 2, SpellRegistry.DRAGON_BREATH_SPELL.get().getDamageSource(this, getOwner()));
 			}
 			case NATURE -> {
 				if (DamageSources.applyDamage(e, 2, SpellRegistry.POISON_BREATH_SPELL.get().getDamageSource(this, getOwner())) && e instanceof LivingEntity livingEntity) livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
@@ -252,9 +244,6 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 			case LIGHTNING -> {
 				DamageSources.applyDamage(e, 2, SpellRegistry.ELECTROCUTE_SPELL.get().getDamageSource(this, getOwner()));
 				if (!level().isClientSide()) MagicManager.spawnParticles(level(), ParticleHelper.ELECTRICITY, e.getX(), e.getY() + e.getBbHeight() / 2, e.getZ(), 10, e.getBbWidth() / 3, e.getBbHeight() / 3, e.getBbWidth() / 3, 0.1, false);
-			}
-			case ICE -> {
-				DamageSources.applyDamage(e, 2, SpellRegistry.CONE_OF_COLD_SPELL.get().getDamageSource(this, getOwner()));
 			}
 		}
 	}
@@ -277,8 +266,7 @@ public class TornadoEntity extends Projectile implements AntiMagicSusceptible, G
 		FIRE(1,      EntityRegistry.FIRE_BREATH_PROJECTILE.get(),   SpellRegistry.FIRE_BREATH_SPELL.get()),
 		ENDER(2,     EntityRegistry.DRAGON_BREATH_PROJECTILE.get(), SpellRegistry.DRAGON_BREATH_SPELL.get()),
 		NATURE(3,    EntityRegistry.POISON_BREATH_PROJECTILE.get(), SpellRegistry.POISON_BREATH_SPELL.get()),
-		LIGHTNING(4, EntityRegistry.ELECTROCUTE_PROJECTILE.get(),   SpellRegistry.ELECTROCUTE_SPELL.get()),
-		ICE(5,       EntityRegistry.CONE_OF_COLD_PROJECTILE.get(),  SpellRegistry.CONE_OF_COLD_SPELL.get());
+		LIGHTNING(4, EntityRegistry.ELECTROCUTE_PROJECTILE.get(),   SpellRegistry.ELECTROCUTE_SPELL.get());
 		public static final IntFunction<TornadoEffect> BY_ID = ByIdMap.continuous(TornadoEffect::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
 		private final int id;
 		private final EntityType<?> entity;
