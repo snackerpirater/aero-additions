@@ -87,7 +87,6 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
 	}
 	@Override
 	public void onRemovedFromLevel() {
-		this.onRemovedHelper(this, AASpells.MobEffects.BREEZE_TIMER);
 		super.onRemovedFromLevel();
 	}
 

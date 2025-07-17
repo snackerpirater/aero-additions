@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,39 +18,43 @@ public class AARecipes extends RecipeProvider {
 
 	@Override
 	protected void buildRecipes(RecipeOutput recipeOutput) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_HEADPIECE.get(), 1)
-				.pattern("CCC")
-				.pattern("CRC")
-				.define('C', ItemRegistry.MAGIC_CLOTH.get())
-				.define('R', AAItems.WIND_RUNE.get())
-				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
-				.save(recipeOutput);
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_ROBES.get(), 1)
-				.pattern("CRC")
-				.pattern("CCC")
-				.pattern("CCC")
-				.define('C', ItemRegistry.MAGIC_CLOTH.get())
-				.define('R', AAItems.WIND_RUNE.get())
-				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
-				.save(recipeOutput);
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_SKIRT.get(), 1)
-				.pattern("CCC")
-				.pattern("CRC")
-				.pattern("C C")
-				.define('C', ItemRegistry.MAGIC_CLOTH.get())
-				.define('R', AAItems.WIND_RUNE.get())
-				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
-				.save(recipeOutput);
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_BOOTS.get(), 1)
-				.pattern("CRC")
-				.pattern("C C")
-				.define('C', ItemRegistry.MAGIC_CLOTH.get())
-				.define('R', AAItems.WIND_RUNE.get())
-				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
-				.save(recipeOutput);
+//		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_HEADPIECE.get(), 1)
+//				.pattern("CCC")
+//				.pattern("CRC")
+//				.define('C', ItemRegistry.MAGIC_CLOTH.get())
+//				.define('R', AAItems.WIND_RUNE.get())
+//				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
+//				.save(recipeOutput);
+//
+//		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_ROBES.get(), 1)
+//				.pattern("CRC")
+//				.pattern("CCC")
+//				.pattern("CCC")
+//				.define('C', ItemRegistry.MAGIC_CLOTH.get())
+//				.define('R', AAItems.WIND_RUNE.get())
+//				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
+//				.save(recipeOutput);
+//
+//		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_SKIRT.get(), 1)
+//				.pattern("CCC")
+//				.pattern("CRC")
+//				.pattern("C C")
+//				.define('C', ItemRegistry.MAGIC_CLOTH.get())
+//				.define('R', AAItems.WIND_RUNE.get())
+//				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
+//				.save(recipeOutput);
+//
+//		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.WINDMAKER_BOOTS.get(), 1)
+//				.pattern("CRC")
+//				.pattern("C C")
+//				.define('C', ItemRegistry.MAGIC_CLOTH.get())
+//				.define('R', AAItems.WIND_RUNE.get())
+//				.unlockedBy("has_rune", has(AAItems.WIND_RUNE.get()))
+//				.save(recipeOutput);
+		SmithingTransformRecipeBuilder.smithing(Ingredient.of(AAItems.WIND_RUNE.get()), Ingredient.of(ItemRegistry.WIZARD_HELMET.get()), Ingredient.EMPTY, RecipeCategory.COMBAT, AAItems.WINDMAKER_HEADPIECE.get()).unlocks("has_rune", has(AAItems.WIND_RUNE.get())).save(recipeOutput, "windmaker_headpiece");
+		SmithingTransformRecipeBuilder.smithing(Ingredient.of(AAItems.WIND_RUNE.get()), Ingredient.of(ItemRegistry.WIZARD_CHESTPLATE.get()), Ingredient.EMPTY, RecipeCategory.COMBAT, AAItems.WINDMAKER_ROBES.get()).unlocks("has_rune", has(AAItems.WIND_RUNE.get())).save(recipeOutput, "windmaker_robes");
+		SmithingTransformRecipeBuilder.smithing(Ingredient.of(AAItems.WIND_RUNE.get()), Ingredient.of(ItemRegistry.WIZARD_LEGGINGS.get()), Ingredient.EMPTY, RecipeCategory.COMBAT, AAItems.WINDMAKER_SKIRT.get()).unlocks("has_rune", has(AAItems.WIND_RUNE.get())).save(recipeOutput, "windmaker_skirt");
+		SmithingTransformRecipeBuilder.smithing(Ingredient.of(AAItems.WIND_RUNE.get()), Ingredient.of(ItemRegistry.WIZARD_BOOTS.get()), Ingredient.EMPTY, RecipeCategory.COMBAT, AAItems.WINDMAKER_BOOTS.get()).unlocks("has_rune", has(AAItems.WIND_RUNE.get())).save(recipeOutput, "windmaker_boots");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AAItems.AIR_STAFF.get(), 1)
 				.pattern("CCS")

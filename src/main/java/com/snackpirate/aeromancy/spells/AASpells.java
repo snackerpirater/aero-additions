@@ -14,7 +14,6 @@ import com.snackpirate.aeromancy.spells.feather_fall.FlightEffect;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
-import com.snackpirate.aeromancy.spells.tornado.TornadoSpell;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftSpell;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
@@ -29,7 +28,6 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.effect.MagicMobEffect;
-import io.redspace.ironsspellbooks.effect.SummonTimer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataSerializer;
@@ -37,7 +35,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -72,10 +69,10 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> WIND_BLADE = registerSpell(new WindBladeSpell());
 	public static final Supplier<AbstractSpell> FLUSH = registerSpell(new FlushSpell());
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
-	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
+//	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
 //	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
-	public static final Supplier<AbstractSpell> TELELINK = registerSpell(new TelelinkSpell());
+//	public static final Supplier<AbstractSpell> TELELINK = registerSpell(new TelelinkSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);
@@ -113,7 +110,6 @@ public class AASpells {
 
 
 	}
-
 	public static class Schools {
 		public static final ResourceLocation WIND_RESOURCE = Aeromancy.id("wind");
 		private static final DeferredRegister<SchoolType> SCHOOLS = DeferredRegister.create(SchoolRegistry.SCHOOL_REGISTRY_KEY, Aeromancy.MOD_ID);
@@ -136,7 +132,6 @@ public class AASpells {
 
 	public static class Attributes {
 		private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, Aeromancy.MOD_ID);
-
 		public static final DeferredHolder<Attribute, Attribute> WIND_MAGIC_RESIST = newResistanceAttribute("wind");
 		public static final DeferredHolder<Attribute, Attribute> WIND_SPELL_POWER = newPowerAttribute("wind");
 
@@ -163,7 +158,6 @@ public class AASpells {
 						-0.3f,
 						AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
-		public static final DeferredHolder<MobEffect, SummonTimer> BREEZE_TIMER = MOB_EFFECTS.register("breeze_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
 
 		public static final DeferredHolder<MobEffect, MobEffect> FLIGHT = MOB_EFFECTS.register("flight", () -> new FlightEffect(MobEffectCategory.BENEFICIAL, 0xd3ebea)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.WATER_MOVEMENT_EFFICIENCY, Aeromancy.id("effect.flight"), 1f, AttributeModifier.Operation.ADD_VALUE)
