@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": [],
+  "base": {
+    "item": "irons_spellbooks:wizard_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "aero_additions:windmaker_headpiece"
+  },
+  "template": {
+    "item": "aero_additions:wind_rune"
+  }
+}

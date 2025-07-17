@@ -1,0 +1,9 @@
+{
+  "amount": 0.05,
+  "attribute": "aero_additions:wind_spell_power",
+  "containerItem": {
+    "count": 1,
+    "id": "aero_additions:wind_upgrade_orb"
+  },
+  "operation": "add_multiplied_base"
+}
