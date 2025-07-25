@@ -163,6 +163,8 @@ public class AASpells {
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.WATER_MOVEMENT_EFFICIENCY, Aeromancy.id("effect.flight"), 1f, AttributeModifier.Operation.ADD_VALUE)
 				.addAttributeModifier(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED, Aeromancy.id("effect.flight"), 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 		public static final DeferredHolder<MobEffect, MobEffect> TELELINKED = MOB_EFFECTS.register("telelinked", () -> new MagicMobEffect(MobEffectCategory.BENEFICIAL, 0xdb74ff));
+		//marker signifying when to double jump
+		public static final DeferredHolder<MobEffect, MobEffect> AIRSTEPPING = MOB_EFFECTS.register("airstepping", () -> new MagicMobEffect(MobEffectCategory.BENEFICIAL, 0xd3ebea));
 	}
 
 }

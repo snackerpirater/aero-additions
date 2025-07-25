@@ -87,6 +87,7 @@ public class AeromancySpellData {
 
 
 	public int getAirStepHitsRemaining() {
+		doSync();
 		return airStepHitsRemaining;
 	}
 
