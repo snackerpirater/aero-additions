@@ -102,7 +102,9 @@ public class AirblastSpell extends AbstractSpell {
 	public void deflect(Projectile projectile, Entity deflector, int spellLevel) {
 		if (deflector != null) {
 			Vec3 vec3 = deflector.getLookAngle().normalize();
-			if (deflector instanceof Player p) vec3 = vec3.scale(0.15*(this.getSpellPower(spellLevel, p)));
+			if (deflector instanceof Player p) {
+				vec3 = vec3.scale(0.15 * (this.getSpellPower(spellLevel, p)));
+			}
 			projectile.setOwner(deflector);
 			projectile.setDeltaMovement(vec3);
 			projectile.hasImpulse = true;

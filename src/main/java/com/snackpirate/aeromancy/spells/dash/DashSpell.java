@@ -80,9 +80,9 @@ public class DashSpell extends AbstractSpell {
 		playerMagicData.setAdditionalCastData(new ImpulseCastData((float) vec.x, (float) vec.y, (float) vec.z, true));
 		//entity.setDeltaMovement(entity.getDeltaMovement().add(vec));
 		entity.setDeltaMovement(new Vec3(
-				Mth.lerp(.75f, entity.getDeltaMovement().x, vec.x),
-				Mth.lerp(.75f, entity.getDeltaMovement().y, vec.y),
-				Mth.lerp(.75f, entity.getDeltaMovement().z, vec.z)
+				Mth.lerp(1, entity.getDeltaMovement().x, vec.x),
+				Mth.lerp(1, entity.getDeltaMovement().y, vec.y),
+				Mth.lerp(1, entity.getDeltaMovement().z, vec.z)
 		));
 		if (entity instanceof Player p) p.setIgnoreFallDamageFromCurrentImpulse(true);
 

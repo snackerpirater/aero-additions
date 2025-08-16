@@ -1,19 +1,14 @@
 package com.snackpirate.aeromancy.spells.airstep;
 
 import com.snackpirate.aeromancy.Aeromancy;
-import com.snackpirate.aeromancy.data.AAData;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.ImpulseCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
-import io.redspace.ironsspellbooks.config.ServerConfigs;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -22,18 +17,15 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,21 +40,24 @@ public class AirstepSpell extends AbstractSpell {
 
 	@Override
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-		return List.of(Component.translatable("spell.aero_additions.airstep.max_jumps", spellLevel));
+		return List.of(
+				Component.translatable("spell.aero_additions.airstep.max_jumps", 1 + spellLevel),
+				Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getDuration(spellLevel, caster), 1))
+				);
 	}
 
 	public AirstepSpell() {
 		this.defaultConfig = (new DefaultConfig())
-				.setMinRarity(SpellRarity.RARE)
+				.setMinRarity(SpellRarity.UNCOMMON)
 				.setSchoolResource(AASpells.Schools.WIND_RESOURCE)
 				.setMaxLevel(7)
-				.setCooldownSeconds(6)
+				.setCooldownSeconds(70)
 				.build();
 		this.manaCostPerLevel = 7;
-		this.baseSpellPower = 1;
-		this.spellPowerPerLevel = 1;
-		this.castTime = 0;
-		this.baseManaCost = 40;
+		this.baseSpellPower = 30;
+		this.spellPowerPerLevel = 10;
+		this.castTime = 30;
+		this.baseManaCost = 60;
 	}
 
 	@Override
@@ -101,14 +96,13 @@ public class AirstepSpell extends AbstractSpell {
 		AeromancySpellData.getAeromancyData(entity).setAirStepHitsRemaining(1 + spellLevel);
 	}
 
-	public static boolean airstepJump(LivingEntity entity) {
-		if (!hasJumps(entity) || !entity.hasEffect(AASpells.MobEffects.AIRSTEPPING) || entity.onGround()) return false;
+	public static boolean airstepJump(AirstepPacket packet, LivingEntity entity) {
+		if (!canJump(entity)) return false;
 		Level level = entity.level();
 		//dunno how else to get spell level other than to pass it through a mob effect, should change later
 		int spellLevel = entity.getEffect(AASpells.MobEffects.AIRSTEPPING).getAmplifier() + 1;
-		Vec3 motion = new Vec3(0, entity.getAttributeValue(Attributes.JUMP_STRENGTH) + entity.getJumpBoostPower() , 0);
-		Vec3 angle = entity.getLookAngle();
-		motion = angle.scale(Mth.invSqrt(angle.x*angle.x + angle.z*angle.z + 0.01f)).multiply(0.45, 0, 0.45).add(motion);
+		Vec3 input = new Vec3(packet.deltaX, 0, packet.deltaZ).yRot(-(float) Mth.atan2(entity.getLookAngle().z, entity.getLookAngle().x)).normalize().scale(0.5);
+		Vec3 motion = input.add(0, entity.getAttributeValue(Attributes.JUMP_STRENGTH) + entity.getJumpBoostPower() , 0);
 		entity.setDeltaMovement(motion);
 		entity.resetFallDistance();
 		if (!entity.level().isClientSide) MagicManager.spawnParticles(level, ParticleTypes.SPIT, entity.getX(), entity.getY(), entity.getZ(), 10, 0.2, 0, 0.2, 0.3, true);
@@ -118,6 +112,10 @@ public class AirstepSpell extends AbstractSpell {
 		return true;
 	}
 
+	public static boolean canJump(LivingEntity entity) {
+//		Aeromancy.LOGGER.info("can jump: {}",hasJumps(entity) && entity.hasEffect(AASpells.MobEffects.AIRSTEPPING) && !entity.onGround() );
+		return hasJumps(entity) && entity.hasEffect(AASpells.MobEffects.AIRSTEPPING) && !entity.onGround();
+	}
 	@SubscribeEvent
 	static void effectRemoved(MobEffectEvent.Remove event) {
 		if (event.getEffectInstance().is(AASpells.MobEffects.AIRSTEPPING)) {
@@ -143,6 +141,10 @@ public class AirstepSpell extends AbstractSpell {
 	@Override
 	public AnimationHolder getCastFinishAnimation() {
 		return SpellAnimations.TOUCH_GROUND_ANIMATION;
+	}
+
+	public int getDuration(int spellLevel, LivingEntity caster) {
+		return (int) (getSpellPower(spellLevel, caster) * 20);
 	}
 
 }

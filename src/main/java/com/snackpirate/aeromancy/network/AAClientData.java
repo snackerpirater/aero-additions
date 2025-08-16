@@ -23,7 +23,6 @@ public class AAClientData {
 	}
 
 	public static void handlePlayerSyncedData(AeromancySpellData playerSyncedData) {
-
 		playerSyncedDataLookup.put(playerSyncedData.getServerPlayerId(), playerSyncedData);
 	}
 

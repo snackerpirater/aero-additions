@@ -26,6 +26,8 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.ExplosionKnockbackEvent;
 
 import static com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell.chanceToDeflect;
 
@@ -132,6 +134,7 @@ public class AAServerEvents {
 								livingEntity.changeDimension(serverPlayer.findRespawnPositionAndUseSpawnBlock(true, DimensionTransition.DO_NOTHING));
 							});
 				}
+			}
 		}
 	}
-}}
+}

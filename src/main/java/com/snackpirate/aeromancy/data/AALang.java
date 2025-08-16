@@ -26,11 +26,11 @@ public class AALang extends LanguageProvider {
 		add("ui.aero_additions.stun_duration", "%ss Stun Duration");
 		add("ui.aero_additions.recast_targets", "%s Targets");
 		addSpell(AASpells.UPDRAFT.get(), "Updraft", "Launch enemies into the air, temporarily stunning them.");
-		addSpell(AASpells.AIRSTEP.get(), "Airstep", "Execute a series of mid-air jumps, in rapid succession.");
+		addSpell(AASpells.AIRSTEP.get(), "Airstep", "Cast to gain the ability to execute a series of mid-air jumps, and automatically protect from fall damage.");
 		addEffect(AASpells.MobEffects.AIRSTEPPING, "Airstepping");
 		add("spell.aero_additions.airstep.max_jumps", "%s Jumps");
 		addSpell(AASpells.ASPHYXIATE.get(), "Asphyxiate", "Draw the air out of the target's lungs, slowly killing them.");
-		addSpell(AASpells.FEATHER_FALL.get(), "Feather Fall", "Give you and your nearby allies the Slow Falling effect.");
+		addSpell(AASpells.FEATHER_FALL.get(), "Feather Flight", "Imbue yourself with the ability to fly for a period of time.");
 		addItem(AAItems.AIR_STAFF, "Air Staff");
 		addItem(AAItems.UPDRAFT_TOME, "Updraft Tome");
 		add(AAItems.UPDRAFT_TOME.get().getDescriptionId() + ".guide", "Can be obtained from Ominous Vaults in Trial Chambers.");
