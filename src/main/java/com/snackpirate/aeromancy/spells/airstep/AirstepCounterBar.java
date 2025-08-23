@@ -21,10 +21,12 @@ public class AirstepCounterBar implements LayeredDraw.Layer {
 		if (!shouldRender()) return;
 		var screenWidth = guiGraphics.guiWidth();
 		var screenHeight = guiGraphics.guiHeight();
-		guiGraphics.blit(COUNTER_TEXTURE, screenWidth/2+56, screenHeight/2, 0, 0, 12, 12, 12, 12);
-		guiGraphics.drawString(Minecraft.getInstance().font, "x" + AAClientData.getAeroSpellData(Minecraft.getInstance().player).getAirStepHitsRemaining(), screenWidth/2 + 20 + 50, screenHeight/2, 0xffffff);
+		int x = screenWidth/2 + 100, y = screenHeight - 42 - ((Minecraft.getInstance().player != null && Minecraft.getInstance().player.isCreative()) ? 0 : 10);
+		guiGraphics.blit(COUNTER_TEXTURE, x, y, 0, 0, 12, 12, 12, 12);
+		guiGraphics.drawString(Minecraft.getInstance().font, "x" + AAClientData.getAeroSpellData(Minecraft.getInstance().player).getAirStepHitsRemaining(), x+13, y+2, 0xffffff);
 	}
 	private static boolean shouldRender() {
 		return Minecraft.getInstance().player != null && Minecraft.getInstance().player.hasEffect(AASpells.MobEffects.AIRSTEPPING) && !Minecraft.getInstance().options.hideGui && !Minecraft.getInstance().player.isSpectator();
 	}
+
 }

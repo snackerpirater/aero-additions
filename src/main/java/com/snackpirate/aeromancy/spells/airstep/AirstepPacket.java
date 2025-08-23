@@ -7,7 +7,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
-//TODO: write player inputs to server for directional airstep
 //client to server
 public class AirstepPacket implements CustomPacketPayload {
 	public static final CustomPacketPayload.Type<AirstepPacket> TYPE = new CustomPacketPayload.Type<>(Aeromancy.id("airstep"));

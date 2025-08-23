@@ -15,10 +15,6 @@ public class TestImbuableTool extends Item implements IPresetSpellContainer {
 	@Override
 	public void initializeSpellContainer(ItemStack itemStack) {
 
-		if (itemStack == null) {
-			return;
-		}
-
 		if (itemStack.getItem() instanceof TestImbuableTool) {
 			if (!ISpellContainer.isSpellContainer(itemStack)) {
 				var spellContainer = ISpellContainer.create(1, true, false).mutableCopy();

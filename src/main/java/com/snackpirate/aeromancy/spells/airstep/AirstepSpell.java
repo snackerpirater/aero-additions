@@ -1,5 +1,6 @@
 package com.snackpirate.aeromancy.spells.airstep;
 
+import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
@@ -144,7 +145,7 @@ public class AirstepSpell extends AbstractSpell {
 	}
 
 	public int getDuration(int spellLevel, LivingEntity caster) {
-		return (int) (getSpellPower(spellLevel, caster) * 20);
+		return (int) (getSpellPower(spellLevel, caster) * 40);
 	}
 
 }

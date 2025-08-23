@@ -1,6 +1,7 @@
 package com.snackpirate.aeromancy;
 
 import be.florens.expandability.api.EventResult;
+import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
@@ -9,13 +10,20 @@ import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
 import io.redspace.ironsspellbooks.api.events.SpellTeleportEvent;
 import io.redspace.ironsspellbooks.capabilities.magic.PocketDimensionManager;
+import io.redspace.ironsspellbooks.capabilities.magic.PortalManager;
+import io.redspace.ironsspellbooks.entity.spells.portal.PortalData;
+import io.redspace.ironsspellbooks.entity.spells.portal.PortalEntity;
+import io.redspace.ironsspellbooks.entity.spells.portal.PortalPos;
+import io.redspace.ironsspellbooks.spells.ender.PortalSpell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.EntityHitResult;
@@ -27,6 +35,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.ExplosionKnockbackEvent;
 
 import static com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell.chanceToDeflect;
@@ -97,44 +106,83 @@ public class AAServerEvents {
 		public static void activateFlight(PlayerSwimEvent event) {
 			if (event.getEntity().hasEffect(AASpells.MobEffects.FLIGHT)) event.setResult(EventResult.SUCCESS);
 		}
+//		@SubscribeEvent
+//		public static void airstepWaterWalk(LivingFluidCollisionEvent event) {
+//			if (event.getEntity().hasEffect(AASpells.MobEffects.AIRSTEPPING)) event.setColliding(true);
+//		}
+//		@SubscribeEvent mfw this doesn't flipping work
+//		public static void magicWindChargeFallDmg(ExplosionKnockbackEvent event) {
+//			Aeromancy.LOGGER.info("kb event");
+//
+//			Aeromancy.LOGGER.info("is magic wind charge: {}", event.getExplosion().getDirectSourceEntity().getType().equals(AASpells.Entities.MAGIC_WIND_CHARGE.get()));
+//			Aeromancy.LOGGER.info("is player: {}", event.getAffectedEntity() instanceof Player);
+//			if (event.getAffectedEntity() instanceof ServerPlayer sp) {
+//				sp.setIgnoreFallDamageFromCurrentImpulse(event.getExplosion().getDirectSourceEntity().getType().equals(AASpells.Entities.MAGIC_WIND_CHARGE.get()));
+//				Aeromancy.LOGGER.info("ignore fall: {}", sp.isIgnoringFallDamageFromCurrentImpulse());
+//			}
+//		}
 
-		@SubscribeEvent
-		public static void telelinkTeleport(SpellTeleportEvent event) {
-			Aeromancy.LOGGER.info("spell teleport event");
-			if (event.getEntity() instanceof LivingEntity entity && entity.hasEffect(AASpells.MobEffects.TELELINKED)) {
-//				Aeromancy.LOGGER.info("spell teleport event 2");
-				event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED))
-						.forEach((livingEntity) -> {
-//							Aeromancy.LOGGER.info("spell teleport event 3");
-							livingEntity.teleportTo(
-									event.getTargetX() + livingEntity.getX() - event.getPrevX(),
-									event.getTargetY() + livingEntity.getY() - event.getPrevY(),
-									event.getTargetZ() + livingEntity.getZ() - event.getPrevZ());
-						});
-			}
-		}
-		@SubscribeEvent
-		public static void telelinkPocketDim(SpellOnCastEvent event) {
-			if (event.getSpellId().equals("irons_spellbooks:pocket_dimension")) {
-				if (event.getEntity() instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(AASpells.MobEffects.TELELINKED)) {
-					BlockPos portalPos = PocketDimensionManager.INSTANCE.findPortalForStructure(serverPlayer.serverLevel(), PocketDimensionManager.INSTANCE.structurePosForPlayer(event.getEntity()));
-//					Aeromancy.LOGGER.info("spell teleport event 2");
-					event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED) && !living.equals(event.getEntity()))
-							.forEach((livingEntity) -> {
-//								Aeromancy.LOGGER.info("spell teleport event 3");
-								livingEntity.changeDimension(new DimensionTransition(serverPlayer.getServer().getLevel(PocketDimensionManager.POCKET_DIMENSION), portalPos.getBottomCenter(), Vec3.ZERO, 180, serverPlayer.getXRot(), DimensionTransition.DO_NOTHING));
+//		@SubscribeEvent
+//		public static void telelinkTeleport(SpellTeleportEvent event) {
+//			Aeromancy.LOGGER.info("spell teleport event");
+//			if (event.getEntity() instanceof LivingEntity entity && entity.hasEffect(AASpells.MobEffects.TELELINKED)) {
+////				Aeromancy.LOGGER.info("spell teleport event 2");
+//				event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED))
+//						.forEach((livingEntity) -> {
+////							Aeromancy.LOGGER.info("spell teleport event 3");
+//							livingEntity.teleportTo(
+//									event.getTargetX() + livingEntity.getX() - event.getPrevX(),
+//									event.getTargetY() + livingEntity.getY() - event.getPrevY(),
+//									event.getTargetZ() + livingEntity.getZ() - event.getPrevZ());
+//						});
+//			}
+//
+//			if (event.getEntity() instanceof Player p) {
+//				var portalData = new PortalData();
+//				portalData.setPortalDuration(200);
+//				PortalEntity portal1 = setupPortalEntity(p.level(), portalData, p, event.getPrev(), p.getYRot());
+//				PortalEntity portal2 = setupPortalEntity(p.level(), portalData, p, event.getTarget(), p.getYRot());
+//				PortalPos pos1 = PortalPos.of(p.level().dimension(), p.position(), p.getYRot());
+//				PortalPos pos2 = PortalPos.of(p.level().dimension(), event.getTarget(), p.getYRot());
+//				portalData.firstPortal(portal1.getUUID(), pos1);
+//				portalData.secondPortal(portal2.getUUID(), pos2);
+//				PortalManager.INSTANCE.addPortalData(portal1.getUUID(), portalData);
+//				PortalManager.INSTANCE.addPortalData(portal2.getUUID(), portalData);
+//				p.level().addFreshEntity(portal1);
+//				PortalManager.INSTANCE.addDirectPortalCooldown(p, portal1.getUUID());
+//			}
+//		}
 
-				});
-			}
-		} else if (event.getSpellId().equals("irons_spellbooks:recall")) {
-				if (event.getEntity() instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(AASpells.MobEffects.TELELINKED)) {
-//					Aeromancy.LOGGER.info("spell teleport event 2");
-					event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED) && !living.equals(event.getEntity()))
-							.forEach((livingEntity) -> {
-								livingEntity.changeDimension(serverPlayer.findRespawnPositionAndUseSpawnBlock(true, DimensionTransition.DO_NOTHING));
-							});
-				}
-			}
-		}
+//		private static PortalEntity setupPortalEntity(Level level, PortalData portalData, Player owner, Vec3 spawnPos, float rotation) {
+//			var portalEntity = new PortalEntity(level, portalData);
+//			portalEntity.setOwnerUUID(owner.getUUID());
+//			portalEntity.moveTo(spawnPos);
+//			portalEntity.setYRot(rotation);
+//			return portalEntity;
+//		}
+//		@SubscribeEvent
+//		public static void telelinkPocketDim(SpellOnCastEvent event) {
+//			if (event.getSpellId().equals("irons_spellbooks:pocket_dimension")) {
+////				if (event.getEntity() instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(AASpells.MobEffects.TELELINKED)) {
+////					BlockPos portalPos = PocketDimensionManager.INSTANCE.findPortalForStructure(serverPlayer.serverLevel(), PocketDimensionManager.INSTANCE.structurePosForPlayer(event.getEntity()));
+//////					Aeromancy.LOGGER.info("spell teleport event 2");
+////					event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED) && !living.equals(event.getEntity()))
+////							.forEach((livingEntity) -> {
+//////								Aeromancy.LOGGER.info("spell teleport event 3");
+////								livingEntity.changeDimension(new DimensionTransition(serverPlayer.getServer().getLevel(PocketDimensionManager.POCKET_DIMENSION), portalPos.getBottomCenter(), Vec3.ZERO, 180, serverPlayer.getXRot(), DimensionTransition.DO_NOTHING));
+////
+////				});
+////			}
+//		} else if (event.getSpellId().equals("irons_spellbooks:recall")) {
+//				if (event.getEntity() instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(AASpells.MobEffects.TELELINKED)) {
+////					Aeromancy.LOGGER.info("spell teleport event 2");
+//					event.getEntity().level().getEntities(EntityTypeTest.forClass(LivingEntity.class), event.getEntity().getBoundingBox().inflate(32), (living) -> living.hasEffect(AASpells.MobEffects.TELELINKED) && !living.equals(event.getEntity()))
+//							.forEach((livingEntity) -> {
+//								livingEntity.changeDimension(serverPlayer.findRespawnPositionAndUseSpawnBlock(true, DimensionTransition.DO_NOTHING));
+//							});
+//				}
+//			}
+
+//		}
 	}
 }

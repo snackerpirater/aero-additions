@@ -91,7 +91,7 @@ public class AAClientEvents {
 			Minecraft minecraft = Minecraft.getInstance();
 			if (minecraft.player != null && minecraft.player == event.getEntity() && !minecraft.player.isSpectator()) {
 				boolean isJumping = minecraft.options.keyJump.isDown();
-				if (!wasJumping && isJumping && !event.getEntity().onGround()) {
+				if (!wasJumping && isJumping && !event.getEntity().onGround() && !event.getEntity().isFallFlying()) {
 					if (AirstepSpell.canJump(event.getEntity())) {
 						int x = (minecraft.player.input.up ? 1 : 0) + (minecraft.player.input.down ? -1 : 0);
 						int z = (minecraft.player.input.right ? 1 : 0) + (minecraft.player.input.left ? -1 : 0);
@@ -103,31 +103,31 @@ public class AAClientEvents {
 				wasJumping = isJumping;
 			}
 		}
-		@SubscribeEvent
-		private static void renderShapeshift(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event) {
-			LivingEntity living = event.getEntity();
-			ResourceLocation entityLoc = AAClientData.getAeroSpellData(living).getShapeshiftedEntityId();
-			LivingEntity e = (LivingEntity) BuiltInRegistries.ENTITY_TYPE.get(entityLoc).create(living.level());
-			if (living instanceof Player && e!=null) {
-				e.yBodyRot = living.yBodyRot;
-				e.yBodyRotO = living.yBodyRotO;
-				e.yHeadRot = living.yHeadRot;
-				e.yHeadRotO = living.yHeadRotO;
-				e.xRotO = living.xRotO;
-				e.setXRot(living.getXRot());
-				e.walkAnimation.setSpeed(living.walkAnimation.speed());
-				e.walkAnimation.speedOld = living.walkAnimation.speedOld;
-				e.walkAnimation.position = living.walkAnimation.position;
-				e.attackAnim = living.attackAnim;
-				e.oAttackAnim = living.oAttackAnim;
-				e.swinging = living.swinging;
-				e.setSprinting(living.isSprinting());
-				Arrays.stream(EquipmentSlot.values()).forEach((slot) -> e.setItemSlot(slot, living.getItemBySlot(slot).copy()));
-
-				Minecraft.getInstance().getEntityRenderDispatcher().getRenderer(e).render(e, living.yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
-//				event.getRenderer().render(e, event.getEntity().yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
-				event.setCanceled(true);
-			}
-		}
+//		@SubscribeEvent
+//		private static void renderShapeshift(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event) {
+//			LivingEntity living = event.getEntity();
+//			ResourceLocation entityLoc = AAClientData.getAeroSpellData(living).getShapeshiftedEntityId();
+//			LivingEntity e = (LivingEntity) BuiltInRegistries.ENTITY_TYPE.get(entityLoc).create(living.level());
+//			if (living instanceof Player && e!=null) {
+//				e.yBodyRot = living.yBodyRot;
+//				e.yBodyRotO = living.yBodyRotO;
+//				e.yHeadRot = living.yHeadRot;
+//				e.yHeadRotO = living.yHeadRotO;
+//				e.xRotO = living.xRotO;
+//				e.setXRot(living.getXRot());
+//				e.walkAnimation.setSpeed(living.walkAnimation.speed());
+//				e.walkAnimation.speedOld = living.walkAnimation.speedOld;
+//				e.walkAnimation.position = living.walkAnimation.position;
+//				e.attackAnim = living.attackAnim;
+//				e.oAttackAnim = living.oAttackAnim;
+//				e.swinging = living.swinging;
+//				e.setSprinting(living.isSprinting());
+//				Arrays.stream(EquipmentSlot.values()).forEach((slot) -> e.setItemSlot(slot, living.getItemBySlot(slot).copy()));
+//
+//				Minecraft.getInstance().getEntityRenderDispatcher().getRenderer(e).render(e, living.yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+////				event.getRenderer().render(e, event.getEntity().yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+//				event.setCanceled(true);
+//			}
+//		}
 	}
 }

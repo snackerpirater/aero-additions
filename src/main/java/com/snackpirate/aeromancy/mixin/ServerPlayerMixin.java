@@ -1,6 +1,5 @@
 package com.snackpirate.aeromancy.mixin;
 
-import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.spells.AASpells;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
