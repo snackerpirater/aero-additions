@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerPlayer.class)
 public class ServerPlayerMixin {
 	@Inject(method="onExplosionHit", at = @At(value = "TAIL"), cancellable = false)
-	public void onExplosionHit(Entity entity, CallbackInfo ci) {
+	public void aero_additions$magicWindChargeFallDmg(Entity entity, CallbackInfo ci) {
 //		Aeromancy.LOGGER.info("explosion hit");
 		ServerPlayer player = (ServerPlayer) (Object) this;
 		player.setIgnoreFallDamageFromCurrentImpulse(entity != null && (entity.getType() == EntityType.WIND_CHARGE || entity.getType() == AASpells.Entities.MAGIC_WIND_CHARGE.get()));

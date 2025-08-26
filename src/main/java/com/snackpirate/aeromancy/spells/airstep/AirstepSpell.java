@@ -52,9 +52,9 @@ public class AirstepSpell extends AbstractSpell {
 				.setMinRarity(SpellRarity.UNCOMMON)
 				.setSchoolResource(AASpells.Schools.WIND_RESOURCE)
 				.setMaxLevel(7)
-				.setCooldownSeconds(70)
+				.setCooldownSeconds(90)
 				.build();
-		this.manaCostPerLevel = 7;
+		this.manaCostPerLevel = 10;
 		this.baseSpellPower = 30;
 		this.spellPowerPerLevel = 10;
 		this.castTime = 30;
@@ -78,7 +78,7 @@ public class AirstepSpell extends AbstractSpell {
 
 	@Override
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-		entity.addEffect(new MobEffectInstance(AASpells.MobEffects.AIRSTEPPING, 1000, spellLevel-1));
+		entity.addEffect(new MobEffectInstance(AASpells.MobEffects.AIRSTEPPING, getDuration(spellLevel, entity), spellLevel-1));
 		AeromancySpellData.getAeromancyData(entity).setAirStepHitsRemaining(1 + spellLevel);
 		super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 	}
@@ -145,7 +145,7 @@ public class AirstepSpell extends AbstractSpell {
 	}
 
 	public int getDuration(int spellLevel, LivingEntity caster) {
-		return (int) (getSpellPower(spellLevel, caster) * 40);
+		return (int) (getSpellPower(spellLevel, caster) * 30);
 	}
 
 }

@@ -12,6 +12,7 @@ import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -72,11 +73,6 @@ public class DashSpell extends AbstractSpell {
 		Vec3 forward = entity.getLookAngle();
 		//Create Dashing Movement Impulse
 		var vec = forward.multiply(2, 1, 2).normalize().scale(multiplier);
-		//Start Spin Attack
-		if (entity.onGround()) {
-			entity.setPos(entity.position().add(0, 1.5, 0));
-			vec.add(0, 0.25, 0);
-		}
 		playerMagicData.setAdditionalCastData(new ImpulseCastData((float) vec.x, (float) vec.y, (float) vec.z, true));
 		//entity.setDeltaMovement(entity.getDeltaMovement().add(vec));
 		entity.setDeltaMovement(new Vec3(
@@ -84,8 +80,6 @@ public class DashSpell extends AbstractSpell {
 				Mth.lerp(1, entity.getDeltaMovement().y, vec.y),
 				Mth.lerp(1, entity.getDeltaMovement().z, vec.z)
 		));
-		if (entity instanceof Player p) p.setIgnoreFallDamageFromCurrentImpulse(true);
-
 		PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new DashParticlesPacket(entity.position(), vec));
 		entity.invulnerableTime = 20;
 		//startSpinAttack(entity, 10);

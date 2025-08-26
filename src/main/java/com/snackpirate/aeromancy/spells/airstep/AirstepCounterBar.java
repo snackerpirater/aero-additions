@@ -21,7 +21,7 @@ public class AirstepCounterBar implements LayeredDraw.Layer {
 		if (!shouldRender()) return;
 		var screenWidth = guiGraphics.guiWidth();
 		var screenHeight = guiGraphics.guiHeight();
-		int x = screenWidth/2 + 100, y = screenHeight - 42 - ((Minecraft.getInstance().player != null && Minecraft.getInstance().player.isCreative()) ? 0 : 10);
+		int x = screenWidth/2 + 100, y = screenHeight - 43 - ((Minecraft.getInstance().player != null && Minecraft.getInstance().player.isCreative()) ? 0 : 10);
 		guiGraphics.blit(COUNTER_TEXTURE, x, y, 0, 0, 12, 12, 12, 12);
 		guiGraphics.drawString(Minecraft.getInstance().font, "x" + AAClientData.getAeroSpellData(Minecraft.getInstance().player).getAirStepHitsRemaining(), x+13, y+2, 0xffffff);
 	}

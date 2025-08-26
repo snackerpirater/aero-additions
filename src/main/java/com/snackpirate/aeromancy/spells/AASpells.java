@@ -73,7 +73,7 @@ public class AASpells {
 //	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
 //	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 //	public static final Supplier<AbstractSpell> TELELINK = registerSpell(new TelelinkSpell());
-	public static final Supplier<AbstractSpell> SHAPESHIFT = registerSpell(new ShapeshiftSpell());
+//	public static final Supplier<AbstractSpell> SHAPESHIFT = registerSpell(new ShapeshiftSpell());
 
 	public static class Entities {
 		private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Aeromancy.MOD_ID);
