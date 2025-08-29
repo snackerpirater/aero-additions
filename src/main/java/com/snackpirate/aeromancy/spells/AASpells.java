@@ -28,6 +28,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.effect.MagicMobEffect;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataSerializer;
@@ -166,6 +167,8 @@ public class AASpells {
 		public static final DeferredHolder<MobEffect, MobEffect> TELELINKED = MOB_EFFECTS.register("telelinked", () -> new MagicMobEffect(MobEffectCategory.BENEFICIAL, 0xdb74ff));
 		//marker signifying when to double jump
 		public static final DeferredHolder<MobEffect, MobEffect> AIRSTEPPING = MOB_EFFECTS.register("airstepping", () -> new MagicMobEffect(MobEffectCategory.BENEFICIAL, 0xd3ebea));
-	}
+
+        public static final DeferredHolder<MobEffect, StunEffect> STUNNED = MOB_EFFECTS.register("stunned", () -> new StunEffect(MobEffectCategory.HARMFUL, 0xFFFF00, ParticleTypes.ANGRY_VILLAGER));
+    }
 
 }
