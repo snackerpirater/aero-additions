@@ -63,6 +63,7 @@ public class TornadoSpell extends AbstractSpell {
 
 
 	private float getSize(int spellLevel, LivingEntity entity) {
+        //probably shouldn't scale with SP since the model isn't that good lol
 		return 4 + (2*spellLevel);
 	}
 

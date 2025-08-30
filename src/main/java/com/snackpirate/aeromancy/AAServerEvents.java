@@ -1,42 +1,24 @@
 package com.snackpirate.aeromancy;
 
 import be.florens.expandability.api.EventResult;
-import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
-import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
-import io.redspace.ironsspellbooks.api.events.SpellTeleportEvent;
-import io.redspace.ironsspellbooks.capabilities.magic.PocketDimensionManager;
-import io.redspace.ironsspellbooks.capabilities.magic.PortalManager;
-import io.redspace.ironsspellbooks.entity.spells.portal.PortalData;
-import io.redspace.ironsspellbooks.entity.spells.portal.PortalEntity;
-import io.redspace.ironsspellbooks.entity.spells.portal.PortalPos;
-import io.redspace.ironsspellbooks.spells.ender.PortalSpell;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.level.ExplosionEvent;
-import net.neoforged.neoforge.event.level.ExplosionKnockbackEvent;
 
 import static com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell.chanceToDeflect;
 

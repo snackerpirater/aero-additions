@@ -27,14 +27,14 @@ public class BreathlessEffect extends MagicMobEffect {
 
 	@Override
 	public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
-		MagicData.getPlayerMagicData(livingEntity).getSyncedData().addEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
+//		MagicData.getPlayerMagicData(livingEntity).getSyncedData().addEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
 		AeromancySpellData.getAeromancyData(livingEntity).addEffects(AeromancySpellData.ASPHYXIATING);
 		super.onEffectAdded(livingEntity, amplifier);
 	}
 
 	@Override
 	public void onEffectRemoved(LivingEntity pLivingEntity, int pAmplifier) {
-		MagicData.getPlayerMagicData(pLivingEntity).getSyncedData().removeEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
+//		MagicData.getPlayerMagicData(pLivingEntity).getSyncedData().removeEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
 		AeromancySpellData.getAeromancyData(pLivingEntity).removeEffects(AeromancySpellData.ASPHYXIATING);
 		super.onEffectRemoved(pLivingEntity, pAmplifier);
 	}

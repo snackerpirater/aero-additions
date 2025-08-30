@@ -12,10 +12,10 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = Aeromancy.MOD_ID)
 public class StunEffect extends MobEffect implements ISyncedMobEffect {
     protected StunEffect(MobEffectCategory category, int color, ParticleOptions particle) {

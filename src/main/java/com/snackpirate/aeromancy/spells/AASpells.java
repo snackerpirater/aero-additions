@@ -12,6 +12,7 @@ import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FlightEffect;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
+import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;
@@ -72,7 +73,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
 //	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
 //	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
-//	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
+	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 //	public static final Supplier<AbstractSpell> TELELINK = registerSpell(new TelelinkSpell());
 //	public static final Supplier<AbstractSpell> SHAPESHIFT = registerSpell(new ShapeshiftSpell());
 
