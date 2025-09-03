@@ -1,5 +1,6 @@
 package com.snackpirate.aeromancy.spells.summon_breeze;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.spells.AASpells;
@@ -30,6 +31,12 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
         super(entityType, level);
         xpReward = 0;
     }
+
+    @Override
+    public @Nullable LivingEntity getTarget() {
+        return this.target;
+    }
+
     public SummonedBreeze(Level level, LivingEntity entity) {
         super(AASpells.Entities.SUMMONED_BREEZE.get(), level);
         SummonManager.setOwner(this, entity);
@@ -37,7 +44,7 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
 
     @Override
     protected Brain<?> makeBrain(Dynamic<?> dynamic) {
-        return super.makeBrain(dynamic);
+        return Brain.provider(ImmutableList.of(), ImmutableList.of()).makeBrain(dynamic);
     }
 
     @Override
@@ -53,15 +60,16 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
         }
     }
 
-    @Override
-    public void tick() {
-        if (!this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).isEmpty())Aeromancy.LOGGER.info(this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).get().toString());
-        super.tick();
-    }
+//    @Override
+//    public void tick() {
+//        if (!this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).isEmpty())Aeromancy.LOGGER.info(this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).get().toString());
+//        super.tick();
+//    }
 
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, true));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 15, 5, false, 25));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.8D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));

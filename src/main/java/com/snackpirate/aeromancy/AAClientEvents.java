@@ -125,7 +125,7 @@ public class AAClientEvents {
 //				Arrays.stream(EquipmentSlot.values()).forEach((slot) -> e.setItemSlot(slot, living.getItemBySlot(slot).copy()));
 //
 //				Minecraft.getInstance().getEntityRenderDispatcher().getRenderer(e).render(e, living.yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
-////				event.getRenderer().render(e, event.getEntity().yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+//				event.getRenderer().render(e, event.getEntity().yBodyRot, event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
 //				event.setCanceled(true);
 //			}
 //		}
