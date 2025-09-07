@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.spells.AASpells;
+import com.snackpirate.aeromancy.spells.wind_charge.MagicWindCharge;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
@@ -17,26 +18,19 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.monster.breeze.Breeze;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-public class SummonedBreeze extends Breeze implements IMagicSummon {
+public class SummonedBreeze extends Breeze implements IMagicSummon, RangedAttackMob {
     public SummonedBreeze(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         xpReward = 0;
     }
-
-    @Override
-    public @Nullable LivingEntity getTarget() {
-        return this.target;
-    }
-
     public SummonedBreeze(Level level, LivingEntity entity) {
         super(AASpells.Entities.SUMMONED_BREEZE.get(), level);
         SummonManager.setOwner(this, entity);
@@ -60,16 +54,11 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
         }
     }
 
-//    @Override
-//    public void tick() {
-//        if (!this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).isEmpty())Aeromancy.LOGGER.info(this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).get().toString());
-//        super.tick();
-//    }
 
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, true));
+        this.goalSelector.addGoal(1, new SummonedBreezeGoals.ShootWindCharge<SummonedBreeze>(this, 1, 40, 10));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 15, 5, false, 25));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.8D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
@@ -106,4 +95,25 @@ public class SummonedBreeze extends Breeze implements IMagicSummon {
         super.onRemovedFromLevel();
     }
 
+    @Nullable
+    @Override
+    public LivingEntity getTarget() {
+        return this.target;
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float v) {
+//        Aeromancy.LOGGER.info("breeze ranged attack");
+        MagicWindCharge charge = new MagicWindCharge(level(), this);
+        charge.setPos(this.position().add(0, this.getEyeHeight() - charge.getBoundingBox().getYsize() * .5f, 0));
+        charge.setDamage(1f);
+//		Aeromancy.LOGGER.info("damage {}", charge.getDamage());
+        charge.shoot(this.getLookAngle().subtract(0, 0.2, 0)); //aim for feet
+        level().addFreshEntity(charge);
+    }
+
+    @Override
+    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
+        return false;
+    }
 }

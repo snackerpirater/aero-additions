@@ -117,7 +117,6 @@ public class MagicWindCharge extends WindCharge implements AntiMagicSusceptible 
 		if (!this.level().isClientSide) {
 			this.discard();
 		}
-
 	}
 
 	protected void explode(Vec3 pos) {

@@ -3,15 +3,12 @@ package com.snackpirate.aeromancy.spells.airstep;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.network.AAClientData;
 import com.snackpirate.aeromancy.spells.AASpells;
-import io.redspace.ironsspellbooks.gui.overlays.ManaBarOverlay;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector2i;
 
 public class AirstepCounterBar implements LayeredDraw.Layer {
 	public static final AirstepCounterBar instance = new AirstepCounterBar();

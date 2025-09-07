@@ -1,13 +1,11 @@
 package com.snackpirate.aeromancy;
 
 import com.snackpirate.aeromancy.item.AAItems;
-import com.snackpirate.aeromancy.network.AAClientData;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.airstep.AirstepCounterBar;
 import com.snackpirate.aeromancy.spells.airstep.AirstepPacket;
 import com.snackpirate.aeromancy.spells.airstep.AirstepSpell;
-import com.snackpirate.aeromancy.spells.dash.DashParticlesPacket;
 import com.snackpirate.aeromancy.spells.tornado.TornadoRenderer;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftVisualRenderer;
 import com.snackpirate.aeromancy.spells.wind_blade.WindBladeRenderer;
@@ -16,29 +14,19 @@ import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.render.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.entity.BreezeRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.resources.PlayerSkin;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RenderLivingEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
-
-import java.util.Arrays;
 
 
 @EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

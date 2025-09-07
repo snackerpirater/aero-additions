@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
@@ -20,6 +21,7 @@ public class FlightEffect extends MagicMobEffect {
 	}
 
 	//wearing armors (except for the windmaker robes) will weigh down the user in flight
+
 	@Override
 	public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
 		if (pLivingEntity.tickCount % 20 == 0) {
@@ -30,7 +32,9 @@ public class FlightEffect extends MagicMobEffect {
 			if (instance != null) {
 				instance.removeModifier(Aeromancy.id("flight.gravity"));
 				if (weightScore != 0)
-					instance.addOrUpdateTransientModifier(new AttributeModifier(Aeromancy.id("flight.gravity"), (weightScore / 4f) - 0.08, AttributeModifier.Operation.ADD_VALUE));
+					instance.addOrUpdateTransientModifier(
+							new AttributeModifier(Aeromancy.id("flight.gravity"), (weightScore / 4f) - 0.08, AttributeModifier.Operation.ADD_VALUE)
+					);
 //				Aeromancy.LOGGER.info("gravity attrib {}", (weightScore / 4f) - 0.16);
 			}
 		}
@@ -41,6 +45,7 @@ public class FlightEffect extends MagicMobEffect {
 	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
 		return true;
 	}
+
 
 	@Override
 	public void onEffectRemoved(LivingEntity pLivingEntity, int pAmplifier) {
