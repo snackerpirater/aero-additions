@@ -43,7 +43,7 @@ public class AsphyxiateSpell extends AbstractSpell {
 		if (playerMagicData != null && playerMagicData.getAdditionalCastData() instanceof TargetEntityCastData && ((playerMagicData.getCastDurationRemaining()) % 10 == 0)) {
 //			Aeromancy.LOGGER.info("asphyx cast tick");
 			var target = ((TargetEntityCastData) playerMagicData.getAdditionalCastData()).getTarget((ServerLevel) level);
-			if (target != null) target.addEffect(new MobEffectInstance(AASpells.MobEffects.BREATHLESS, 5, spellLevel-1));
+			if (target != null) target.addEffect(new MobEffectInstance(AASpells.MobEffects.BREATHLESS, 10, spellLevel-1));
 		}
 		super.onServerCastTick(level, spellLevel, entity, playerMagicData);
 	}
