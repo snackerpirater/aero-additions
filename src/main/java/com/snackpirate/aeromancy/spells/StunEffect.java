@@ -16,7 +16,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = Aeromancy.MOD_ID)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 public class StunEffect extends MobEffect implements ISyncedMobEffect {
     protected StunEffect(MobEffectCategory category, int color, ParticleOptions particle) {
         super(category, color, particle);

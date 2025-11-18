@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = Aeromancy.MOD_ID)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 public class AAPayloadHandler {
 
 	@SubscribeEvent

@@ -15,7 +15,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID, value = Dist.CLIENT)
 //copied from ScreenEffectsOverlay / OverlayRegistry
 public class AAOverlay implements LayeredDraw.Layer {
 	private static float ticks;

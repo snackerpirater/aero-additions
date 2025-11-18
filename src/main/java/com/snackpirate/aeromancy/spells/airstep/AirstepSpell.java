@@ -30,7 +30,7 @@ import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import java.util.List;
 import java.util.Optional;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 @AutoSpellConfig
 public class AirstepSpell extends AbstractSpell {
 	private final DefaultConfig defaultConfig;

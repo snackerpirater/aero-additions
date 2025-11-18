@@ -29,7 +29,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID, value = Dist.CLIENT)
 public class AAClientEvents {
 
 	@SubscribeEvent
@@ -67,9 +67,9 @@ public class AAClientEvents {
 	}
 	@SubscribeEvent
 	public static void registerLayers(RegisterGuiLayersEvent event) {
-		event.registerAbove(IronsSpellbooks.id("mana_overlay"), Aeromancy.id("airstep_counter"), AirstepCounterBar.instance);
+		event.registerAbove(Aeromancy.id("screen_effects"), Aeromancy.id("airstep_counter"), AirstepCounterBar.instance);
 	}
-	@EventBusSubscriber(modid = Aeromancy.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+	@EventBusSubscriber(modid = Aeromancy.MOD_ID, value = Dist.CLIENT)
 	static class Game {
  	//once again very graciously borrowed from tinkers' construct
 		private static boolean wasJumping = false;

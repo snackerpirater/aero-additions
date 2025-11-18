@@ -51,7 +51,7 @@ import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import static com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell.chanceToDeflect;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 public class AAServerEvents {
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
@@ -63,7 +63,7 @@ public class AAServerEvents {
 		event.put(AASpells.Entities.SUMMONED_BREEZE.get(), SummonedBreeze.createAttributes().build());
 	}
 
-	@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+	@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 	public static class Game {
 		@SubscribeEvent
 		public static void windShieldDeflection(ProjectileImpactEvent event) {
