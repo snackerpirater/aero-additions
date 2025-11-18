@@ -31,16 +31,13 @@ public class Aeromancy
     public static final Logger LOGGER = LogUtils.getLogger();
     public static ResourceLocation id(String s) {return ResourceLocation.fromNamespaceAndPath(MOD_ID, s);}
 
-
     public Aeromancy(IEventBus modEventBus, ModContainer modContainer)
     {
-        NeoForge.EVENT_BUS.register(this);
         AASounds.register(modEventBus);
         AASpells.register(modEventBus);
         AAItems.register(modEventBus);
         AACreativeTab.register(modEventBus);
         AADataAttachments.register(modEventBus);
-
     }
 
 }
