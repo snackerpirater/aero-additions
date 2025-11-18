@@ -67,6 +67,7 @@ public class AAClientEvents {
 	}
 	@SubscribeEvent
 	public static void registerLayers(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(Aeromancy.id("screen_effects"), AAOverlay.instance);
 		event.registerAbove(Aeromancy.id("screen_effects"), Aeromancy.id("airstep_counter"), AirstepCounterBar.instance);
 	}
 	@EventBusSubscriber(modid = Aeromancy.MOD_ID, value = Dist.CLIENT)
