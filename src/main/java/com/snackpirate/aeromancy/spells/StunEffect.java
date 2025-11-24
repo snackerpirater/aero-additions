@@ -32,7 +32,7 @@ public class StunEffect extends MobEffect implements ISyncedMobEffect {
     @SubscribeEvent
     public static void onApply(MobEffectEvent.Added event) {
         LivingEntity entity = event.getEntity();
-        if (entity instanceof Player p) {
+        if (entity instanceof Player p && event.getEffectInstance() != null && event.getEffectInstance().is(AASpells.MobEffects.STUNNED)) {
             MagicData magicData = MagicData.getPlayerMagicData(entity);
             SpellSelectionManager selections = new SpellSelectionManager(p);
             PlayerCooldowns cooldowns = magicData.getPlayerCooldowns();

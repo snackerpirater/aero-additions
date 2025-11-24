@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.snackpirate.aeromancy.AAClientEvents;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.network.AAClientData;
+import com.snackpirate.aeromancy.spells.AASpells;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
@@ -139,6 +140,6 @@ public class WindySwirlRenderer {
 		return RenderType.energySwirl(texture, f * 0.02F % 1.0F, f * 0.01F % 1.0F);
 	}
 	private static boolean shouldRender(LivingEntity entity, Long shouldRenderFlag) {
-		return AAClientData.getAeroSpellData(entity).hasEffect(shouldRenderFlag);
+		return shouldRenderFlag == 2 ? entity.hasEffect(AASpells.MobEffects.WIND_SHIELD) : entity.hasEffect(AASpells.MobEffects.BREATHLESS);
 	}
 }

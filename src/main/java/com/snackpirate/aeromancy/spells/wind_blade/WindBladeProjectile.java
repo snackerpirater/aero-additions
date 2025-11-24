@@ -5,19 +5,18 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
@@ -56,7 +55,7 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 
 
 	@Override
-	protected void onHitBlock(BlockHitResult blockHitResult) {
+	protected void onHitBlock(@NotNull BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
 		discard();
 	}
@@ -68,7 +67,7 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 		var target = entityHitResult.getEntity();
 		if (target instanceof LivingEntity livingTarget) livingTarget.knockback(this.getDamage(), this.getX() - target.getX(), this.getZ() - target.getZ());
 		DamageSources.applyDamage(target, getDamage(), AASpells.WIND_BLADE.get().getDamageSource(this, getOwner()));
-		discard();
+		pierceOrDiscard();
 	}
 
 	public WindBladeProjectile(EntityType<? extends Projectile> entityType, Level level) {
@@ -76,7 +75,7 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 	}
 
 	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
+	protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+		super.defineSynchedData(pBuilder);
 	}
 }

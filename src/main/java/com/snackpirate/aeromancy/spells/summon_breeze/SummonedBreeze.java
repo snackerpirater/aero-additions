@@ -16,6 +16,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -46,6 +48,9 @@ public class SummonedBreeze extends Breeze implements IMagicSummon, RangedAttack
        if (target!=null && SummonManager.getOwner(this) != null && !target.is(SummonManager.getOwner(this))) super.setTarget(target);
     }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return Breeze.createLivingAttributes().add(Attributes.STEP_HEIGHT, 1f).add(Attributes.FOLLOW_RANGE, 32);
+    }
     @Override
     public void onUnSummon() {
         if (!level().isClientSide) {
@@ -108,7 +113,7 @@ public class SummonedBreeze extends Breeze implements IMagicSummon, RangedAttack
         charge.setPos(this.position().add(0, this.getEyeHeight() - charge.getBoundingBox().getYsize() * .5f, 0));
         charge.setDamage(1f);
 //		Aeromancy.LOGGER.info("damage {}", charge.getDamage());
-        charge.shoot(this.getLookAngle().subtract(0, 0.2, 0)); //aim for feet
+        charge.shoot(target.position().subtract(this.getEyePosition()).normalize().scale(0.5)); //aim for feet
         level().addFreshEntity(charge);
     }
 

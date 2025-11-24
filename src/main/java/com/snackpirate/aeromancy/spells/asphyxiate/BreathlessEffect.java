@@ -5,11 +5,12 @@ import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.wind_shield.WindySwirlRenderer;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.damage.DamageSources;
+import io.redspace.ironsspellbooks.effect.ISyncedMobEffect;
 import io.redspace.ironsspellbooks.effect.MagicMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class BreathlessEffect extends MagicMobEffect {
+public class BreathlessEffect extends MagicMobEffect implements ISyncedMobEffect {
 	public BreathlessEffect(MobEffectCategory category, int color) {
 		super(category, color);
 	}
@@ -28,14 +29,12 @@ public class BreathlessEffect extends MagicMobEffect {
 	@Override
 	public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
 //		MagicData.getPlayerMagicData(livingEntity).getSyncedData().addEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
-		AeromancySpellData.getAeromancyData(livingEntity).addEffects(AeromancySpellData.ASPHYXIATING);
 		super.onEffectAdded(livingEntity, amplifier);
 	}
 
 	@Override
 	public void onEffectRemoved(LivingEntity pLivingEntity, int pAmplifier) {
 //		MagicData.getPlayerMagicData(pLivingEntity).getSyncedData().removeEffects(WindySwirlRenderer.RENDER_ASPHYXIATION);
-		AeromancySpellData.getAeromancyData(pLivingEntity).removeEffects(AeromancySpellData.ASPHYXIATING);
 		super.onEffectRemoved(pLivingEntity, pAmplifier);
 	}
 }

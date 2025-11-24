@@ -73,7 +73,7 @@ public class AASpells {
 	public static final Supplier<AbstractSpell> DASH = registerSpell(new DashSpell());
 //	public static final Supplier<AbstractSpell> TORNADO = registerSpell(new TornadoSpell());
 //	public static final Supplier<AbstractSpell> THUNDERCLAP = registerSpell(new ThunderclapSpell());
-	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
+//	public static final Supplier<AbstractSpell> SUMMON_BREEZE = registerSpell(new SummonBreezeSpell());
 //	public static final Supplier<AbstractSpell> TELELINK = registerSpell(new TelelinkSpell());
 //	public static final Supplier<AbstractSpell> SHAPESHIFT = registerSpell(new ShapeshiftSpell());
 

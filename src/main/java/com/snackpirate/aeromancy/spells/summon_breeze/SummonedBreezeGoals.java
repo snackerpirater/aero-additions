@@ -122,6 +122,7 @@ public class SummonedBreezeGoals {
 				} else {
 					this.mob.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
 				}
+				Aeromancy.LOGGER.info("atk time {}", this.attackTime);
 				if (--this.attackTime <= 0) {
 					this.mob.performRangedAttack(livingentity, 1);
 					this.attackTime = this.attackIntervalMin;

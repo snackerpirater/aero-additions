@@ -12,6 +12,7 @@ import io.redspace.ironsspellbooks.entity.mobs.SummonedPolarBear;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForge;
@@ -23,7 +24,7 @@ public class SummonBreezeSpell extends AbstractSpell {
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(AASpells.Schools.WIND_RESOURCE)
-            .setMaxLevel(10)
+            .setMaxLevel(5)
             .setCooldownSeconds(180)
             .build();
 
@@ -82,6 +83,10 @@ public class SummonBreezeSpell extends AbstractSpell {
 
             RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTime, castSource, summonedEntitiesCastData);
             recasts.addRecast(recastInstance, playerMagicData);
+
+//            entity.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(/*attribute value and whatever here*/));
+
+
         }
 
         super.onCast(world, spellLevel, entity, castSource, playerMagicData);
