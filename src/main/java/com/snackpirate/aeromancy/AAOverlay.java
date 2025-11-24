@@ -15,15 +15,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 //copied from ScreenEffectsOverlay / OverlayRegistry
 public class AAOverlay implements LayeredDraw.Layer {
 	private static float ticks;
 	public static AAOverlay instance = new AAOverlay();
-	@SubscribeEvent
-	public static void register(RegisterGuiLayersEvent event) {
-		event.registerAboveAll(Aeromancy.id("screen_effects"), instance);
-	}
 
 	@Override
 	public void render(@NotNull GuiGraphics guiGraphics, @NotNull DeltaTracker deltaTracker) {

@@ -31,41 +31,13 @@ public class Aeromancy
     public static final Logger LOGGER = LogUtils.getLogger();
     public static ResourceLocation id(String s) {return ResourceLocation.fromNamespaceAndPath(MOD_ID, s);}
 
-
     public Aeromancy(IEventBus modEventBus, ModContainer modContainer)
     {
-        modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
         AASounds.register(modEventBus);
         AASpells.register(modEventBus);
         AAItems.register(modEventBus);
         AACreativeTab.register(modEventBus);
         AADataAttachments.register(modEventBus);
-
-    }
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
     }
 
 }

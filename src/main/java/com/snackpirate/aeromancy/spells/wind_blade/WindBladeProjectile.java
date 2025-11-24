@@ -5,22 +5,26 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 
 import java.util.Optional;
 
-public class WindBladeProjectile extends AbstractMagicProjectile {
+public class WindBladeProjectile extends AbstractMagicProjectile implements IEntityWithComplexSpawn {
 	@Override
 	public void trailParticles() {
 		for (int i = 0; i < 1; i++) {
@@ -32,7 +36,9 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 		}
 	}
 
-	@Override
+
+
+    @Override
 	public void impactParticles(double x, double y, double z) {
 		MagicManager.spawnParticles(this.level(), ParticleTypes.SPIT, x, y, z, 5, .1, .1, .1, .25, true);
 	}
@@ -47,15 +53,19 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 		setOwner(shooter);
 	}
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+    }
 
-	@Override
+    @Override
 	public Optional<Holder<SoundEvent>> getImpactSound() {
 		return Optional.of(SoundEvents.WIND_CHARGE_BURST);
 	}
 
 
 	@Override
-	protected void onHitBlock(@NotNull BlockHitResult blockHitResult) {
+	protected void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
 		discard();
 	}
@@ -67,15 +77,11 @@ public class WindBladeProjectile extends AbstractMagicProjectile {
 		var target = entityHitResult.getEntity();
 		if (target instanceof LivingEntity livingTarget) livingTarget.knockback(this.getDamage(), this.getX() - target.getX(), this.getZ() - target.getZ());
 		DamageSources.applyDamage(target, getDamage(), AASpells.WIND_BLADE.get().getDamageSource(this, getOwner()));
-		pierceOrDiscard();
+		discard();
 	}
 
 	public WindBladeProjectile(EntityType<? extends Projectile> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-		super.defineSynchedData(pBuilder);
-	}
 }

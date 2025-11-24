@@ -1,6 +1,5 @@
 package com.snackpirate.aeromancy.spells.airstep;
 
-import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import com.snackpirate.aeromancy.Aeromancy;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
@@ -30,7 +29,7 @@ import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import java.util.List;
 import java.util.Optional;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 @AutoSpellConfig
 public class AirstepSpell extends AbstractSpell {
 	private final DefaultConfig defaultConfig;
@@ -101,8 +100,7 @@ public class AirstepSpell extends AbstractSpell {
 		if (!canJump(entity)) return false;
 		Level level = entity.level();
 		//dunno how else to get spell level other than to pass it through a mob effect, should change later
-		int spellLevel = entity.getEffect(AASpells.MobEffects.AIRSTEPPING).getAmplifier() + 1;
-		Vec3 input = new Vec3(packet.deltaX, 0, packet.deltaZ).yRot(-(float) Mth.atan2(entity.getLookAngle().z, entity.getLookAngle().x)).normalize().scale(0.5);
+        Vec3 input = new Vec3(packet.deltaX, 0, packet.deltaZ).yRot(-(float) Mth.atan2(entity.getLookAngle().z, entity.getLookAngle().x)).normalize().scale(0.5);
 		Vec3 motion = input.add(0, entity.getAttributeValue(Attributes.JUMP_STRENGTH) + entity.getJumpBoostPower() , 0);
 		entity.setDeltaMovement(motion);
 		entity.resetFallDistance();
@@ -119,7 +117,7 @@ public class AirstepSpell extends AbstractSpell {
 	}
 	@SubscribeEvent
 	static void effectRemoved(MobEffectEvent.Remove event) {
-		if (event.getEffectInstance().is(AASpells.MobEffects.AIRSTEPPING)) {
+		if (event.getEffectInstance() != null && event.getEffectInstance().is(AASpells.MobEffects.AIRSTEPPING)) {
 			AeromancySpellData.getAeromancyData(event.getEntity()).setAirStepHitsRemaining(0);
 		}
 	}
@@ -129,7 +127,7 @@ public class AirstepSpell extends AbstractSpell {
 
 	@SubscribeEvent
 	static void effectRemoved(MobEffectEvent.Expired event) {
-		if (event.getEffectInstance().is(AASpells.MobEffects.AIRSTEPPING)) {
+		if (event.getEffectInstance() != null && event.getEffectInstance().is(AASpells.MobEffects.AIRSTEPPING)) {
 			AeromancySpellData.getAeromancyData(event.getEntity()).setAirStepHitsRemaining(0);
 		}
 	}

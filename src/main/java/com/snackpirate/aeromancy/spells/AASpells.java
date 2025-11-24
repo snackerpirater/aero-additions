@@ -12,7 +12,6 @@ import com.snackpirate.aeromancy.spells.dash.DashSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FeatherFallSpell;
 import com.snackpirate.aeromancy.spells.feather_fall.FlightEffect;
 import com.snackpirate.aeromancy.spells.flush.FlushSpell;
-import com.snackpirate.aeromancy.spells.summon_breeze.SummonBreezeSpell;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
 import com.snackpirate.aeromancy.spells.tornado.TornadoEntity;
 import com.snackpirate.aeromancy.spells.updraft.UpdraftEntity;

@@ -18,7 +18,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 public class AAData extends DatapackBuiltinEntriesProvider {
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()

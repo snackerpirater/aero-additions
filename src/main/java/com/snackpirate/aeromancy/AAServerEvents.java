@@ -7,6 +7,7 @@ import com.snackpirate.aeromancy.data.AAEntityTypeTags;
 import com.snackpirate.aeromancy.network.AeromancySpellData;
 import com.snackpirate.aeromancy.spells.AASpells;
 import com.snackpirate.aeromancy.spells.summon_breeze.SummonedBreeze;
+import com.snackpirate.aeromancy.spells.wind_blade.WindBladeProjectile;
 import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
 import io.redspace.ironsspellbooks.api.events.SpellTeleportEvent;
 import io.redspace.ironsspellbooks.capabilities.magic.PocketDimensionManager;
@@ -16,7 +17,9 @@ import io.redspace.ironsspellbooks.entity.spells.portal.PortalData;
 import io.redspace.ironsspellbooks.entity.spells.portal.PortalEntity;
 import io.redspace.ironsspellbooks.entity.spells.portal.PortalPos;
 import io.redspace.ironsspellbooks.spells.ender.PortalSpell;
+import net.minecraft.client.telemetry.events.WorldLoadEvent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.worldgen.DimensionTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -26,24 +29,29 @@ import net.minecraft.world.entity.monster.breeze.Breeze;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.ExplosionKnockbackEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import static com.snackpirate.aeromancy.spells.wind_shield.WindShieldSpell.chanceToDeflect;
 
-@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 public class AAServerEvents {
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
@@ -55,7 +63,7 @@ public class AAServerEvents {
 		event.put(AASpells.Entities.SUMMONED_BREEZE.get(), SummonedBreeze.createAttributes().build());
 	}
 
-	@EventBusSubscriber(modid = Aeromancy.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+	@EventBusSubscriber(modid = Aeromancy.MOD_ID)
 	public static class Game {
 		@SubscribeEvent
 		public static void windShieldDeflection(ProjectileImpactEvent event) {

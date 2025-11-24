@@ -18,8 +18,12 @@ public class ServerPlayerMixin {
 	public void aero_additions$magicWindChargeFallDmg(Entity entity, CallbackInfo ci) {
 //		Aeromancy.LOGGER.info("explosion hit");
 		ServerPlayer player = (ServerPlayer) (Object) this;
+        //wind charges fired by enemies will cause fall damage
 		if (entity instanceof MagicWindCharge windCharge) {
-			player.setIgnoreFallDamageFromCurrentImpulse(windCharge.getOwner() != null && (windCharge.getOwner().is(player) || (SummonManager.getOwner(windCharge.getOwner())!=null && SummonManager.getOwner(windCharge.getOwner()).is(player))));
+			player.setIgnoreFallDamageFromCurrentImpulse(windCharge.getOwner() != null &&
+                    (windCharge.getOwner().is(player) ||
+                            (SummonManager.getOwner(windCharge.getOwner())!=null &&
+                                    SummonManager.getOwner(windCharge.getOwner()).isAlliedTo(player))));
 		}
 	}
 }
