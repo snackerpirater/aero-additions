@@ -87,7 +87,7 @@ public class FeatherFallSpell extends AbstractSpell {
 				float radius = 3;
 				AtomicInteger targets = new AtomicInteger(0);
 				targetEntity.level().getEntitiesOfClass(LivingEntity.class, targetEntity.getBoundingBox().inflate(radius)).forEach((victim) -> {
-					if (targets.get() < MAX_TARGETS && victim.distanceToSqr(targetEntity) < radius * radius && Utils.shouldHealEntity(entity, victim)) {
+					if (targets.get() < MAX_TARGETS && victim.distanceToSqr(targetEntity) < radius * radius && Utils.shouldHealEntity((Entity) entity, victim)) {
 						victim.addEffect(new MobEffectInstance(AASpells.MobEffects.FLIGHT, getDuration(spellLevel, entity), 0));
 						targets.incrementAndGet();
 					}
